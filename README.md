@@ -1,0 +1,197 @@
+# آمرز — amorz.ir
+
+فروشگاه و مارکت‌پلیس خدمات و محصولات مراسم ترحیم در بهشت زهرا (س).
+ساخته‌شده با **Next.js 15 App Router + JavaScript (بدون TypeScript) + Tailwind CSS + MongoDB/Mongoose**، با معماری **SEO-First**.
+
+بدون درگاه پرداخت و بدون Checkout؛ کاربر قیمت را می‌بیند و تلفنی سفارش می‌دهد.
+
+---
+
+## اجرا
+
+```bash
+npm install
+cp .env.example .env      # مقادیر را ویرایش کنید
+npm run dev               # http://localhost:3000
+```
+
+بیلد و اجرای پروداکشن:
+
+```bash
+npm run build
+npm start
+```
+
+### دیتابیس
+
+سایت **بدون MongoDB هم کار می‌کند**؛ در این حالت داده از `src/data/seed.mjs` سرو می‌شود.
+برای استفاده از دیتابیس، `MONGODB_URI` را در `.env` بگذارید و یک بار اجرا کنید:
+
+```bash
+npm run seed
+```
+
+این اسکریپت همان داده اولیه را به‌صورت upsert داخل کالکشن‌های `categories`، `products` و `services` می‌نویسد.
+لایه `src/lib/queries.js` به‌صورت خودکار تشخیص می‌دهد از کدام منبع بخواند و اگر اتصال دیتابیس قطع باشد، به داده داخلی برمی‌گردد (سایت هیچ‌وقت داون نمی‌شود).
+
+---
+
+## پنل مدیریت
+
+آدرس: `/admin` — رمز ورود از `ADMIN_PASSWORD` در فایل `.env` خوانده می‌شود.
+
+```env
+ADMIN_PASSWORD=یک-رمز-قوی
+ADMIN_SECRET=یک-رشته-تصادفی-طولانی
+```
+
+- ورود با کوکی امضاشده HMAC (بدون پکیج اضافه)، نشست ۱۲ ساعته، محافظت با middleware
+- CRUD کامل برای **محصولات، خدمات، دسته‌بندی‌ها و مقالات**
+- آپلود تصویر روی خود سرور در `public/uploads/سال/ماه/` (حداکثر ۵ مگابایت)
+- ویرایشگر مارک‌داون با نوار ابزار، پیش‌نمایش زنده و شمارش کلمات
+- تولید خودکار اسلاگ لاتین از عنوان فارسی (قابل ویرایش دستی)
+- فیلدهای اختصاصی سئو (Title، Description، noindex) برای هر رکورد
+- بعد از هر ذخیره، صفحات مرتبط سایت و `sitemap.xml` **خودکار بازسازی می‌شوند** — بدون بیلد مجدد
+- حذف دسته‌بندی دارای محصول یا خدمت مسدود می‌شود تا صفحه‌ای ۴۰۴ نشود
+- کل مسیر `/admin` با `noindex, nofollow` از دید گوگل پنهان است
+
+> برای افزودن فیلد جدید به هر موجودیت، فقط `src/lib/entities.js` را ویرایش کنید؛
+> فرم، جدول، اعتبارسنجی و بازسازی کش خودکار به‌روز می‌شوند.
+
+## بخش مقالات (مجله)
+
+- `/blog`، `/blog/page/[n]`، `/blog/[slug]`، `/blog/tag/[tag]` و صفحه‌بندی برچسب‌ها
+- متن با مارک‌داون نوشته می‌شود و هنگام رندر: تیترها به h2/h3 تبدیل و `id` می‌گیرند (فهرست مطالب خودکار)، لینک‌های خارجی `nofollow` می‌شوند و تصاویر `lazy` بارگذاری می‌شوند
+- Schema `BlogPosting` با تاریخ انتشار و بازبینی، نویسنده، ناشر و تعداد کلمات
+- زمان مطالعه، مطالب مرتبط بر اساس برچسب مشترک، و **لینک به محصولات و خدمات مرتبط** (لینک‌سازی داخلی)
+- صفحه برچسب با کمتر از ۳ مقاله خودکار `noindex` می‌شود تا thin content ایجاد نشود
+- پیش‌نویس‌ها و مقالات با تاریخ انتشار آینده هرگز عمومی نمی‌شوند
+
+## ساختار پروژه
+
+```
+src/
+├─ middleware.js                     # محافظت از /admin و /api/admin
+├─ app/
+│  ├─ layout.jsx                     # فقط html/body و متادیتای پایه
+│  ├─ sitemap.js robots.js manifest.js
+│  ├─ (site)/                        # بخش عمومی — لایه‌ای با هدر، فوتر و Organization/WebSite schema
+│  │  ├─ page.jsx                    # صفحه اصلی
+│  │  ├─ categories/ category/[slug]/(+ page/[n])
+│  │  ├─ products/ services/ (+ page/[n])
+│  │  ├─ product/[slug]/ service/[slug]/
+│  │  ├─ blog/ blog/[slug]/ blog/page/[n]/ blog/tag/[tag]/
+│  │  └─ about/ contact/ faq/ search/ not-found.jsx
+│  ├─ admin/                         # پنل مدیریت (پوسته جدا، noindex)
+│  │  ├─ layout.jsx page.jsx actions.js
+│  │  ├─ login/
+│  │  └─ [entity]/ (فهرست) + new/ + [id]/
+│  └─ api/                           # products, services, categories, search, revalidate, admin/upload
+├─ components/                       # UI عمومی + components/admin برای پنل
+├─ lib/
+│  ├─ site.js       # تنها منبع حقیقت اطلاعات کسب‌وکار
+│  ├─ seo.js        # buildMetadata + همه Schemaها
+│  ├─ entities.js   # تعریف فیلدهای پنل (منبع واحد فرم/جدول/اعتبارسنجی)
+│  ├─ queries.js    # لایه داده عمومی با fallback
+│  ├─ adminData.js  # CRUD و اعتبارسنجی پنل
+│  ├─ auth.js       # توکن HMAC نشست
+│  ├─ markdown.js   # رندر مارک‌داون + فهرست مطالب + زمان مطالعه
+│  ├─ slugify.js    # نویسه‌گردانی فارسی به اسلاگ لاتین
+│  └─ mongodb.js utils.js date.js
+├─ models/                           # Mongoose: Category, Product, Service, Article
+└─ data/seed.mjs, articles.mjs       # داده اولیه (۹ دسته، ۱۰ محصول، ۱۷ خدمت، ۳ مقاله)
+```
+
+---
+
+## آنچه برای SEO پیاده شده است
+
+**رندر و ساختار**
+
+- تمام صفحات محتوایی Server Component و SSG/ISR (`revalidate`) هستند؛ HTML کامل برای خزنده ارسال می‌شود.
+- تنها دو کامپوننت کلاینتی وجود دارد (منوی موبایل و فرم جستجو) — JS اولیه حدود ۱۰۳KB.
+- `loading.jsx` برای جلوگیری از layout shift.
+
+**متادیتا**
+
+- `generateMetadata` داینامیک روی همه صفحات داینامیک (دسته، محصول، خدمت، صفحه‌بندی).
+- Title و Description یکتا برای هر صفحه؛ description با `clamp()` در محدوده امن ۱۶۰ کاراکتر بریده می‌شود.
+- `metadataBase` + `alternates.canonical` مطلق روی همه صفحات.
+- Open Graph و Twitter Card کامل با تصویر ۱۲۰۰×۶۳۰ (PNG — چون شبکه‌های اجتماعی SVG را رندر نمی‌کنند).
+- `robots` per-page؛ صفحه جستجو `noindex, follow`.
+
+**Structured Data (JSON-LD)**
+
+| Schema | کجا |
+|---|---|
+| `Organization` + `LocalBusiness` (با geo، ساعات کاری، تلفن) | همه صفحات |
+| `WebSite` + `SearchAction` | همه صفحات |
+| `BreadcrumbList` | همه صفحات داخلی |
+| `Product` + `Offer` | صفحه محصول |
+| `Service` + `Offer` | صفحه خدمت |
+| `CollectionPage` + `ItemList` | فهرست‌ها و دسته‌ها |
+| `FAQPage` | صفحه اصلی، دسته‌ها، `/faq` |
+
+> قیمت‌ها در UI به تومان است و در Schema به ریال (`IRR`) تبدیل می‌شود.
+
+**صفحه‌بندی بدون duplicate content**
+
+- صفحه ۱ همیشه آدرس پایه است (`/products`)، نه `/products/page/1`.
+- `/products/page/1` با ریدایرکت ۳۰۱ به `/products` می‌رود (در `next.config.mjs`).
+- canonical هر صفحه به خودش اشاره می‌کند و `rel="prev"` / `rel="next"` رندر می‌شود.
+- همه صفحات صفحه‌بندی در sitemap هستند.
+
+**۴۰۴ واقعی به‌جای soft-404**
+
+آدرس ناشناس (مثلاً `/product/xyz`) وضعیت **404** برمی‌گرداند، نه ۲۰۰ با صفحه خالی — که یکی از رایج‌ترین اشتباهات SEO در پروژه‌های Next است.
+
+> ⚠️ **در ریشه `app/` فایل `loading.jsx` نسازید.** وجود آن باعث می‌شود پاسخ زودتر استریم شود و
+> هدر با وضعیت ۲۰۰ ارسال گردد؛ نتیجه‌اش این است که همه صفحات ۴۰۴ سایت soft-404 می‌شوند و گوگل
+> آن‌ها را ایندکس می‌کند. اگر اسکلت لودینگ می‌خواهید، `loading.jsx` را داخل مسیرهای بدون
+> `notFound()` بگذارید.
+
+**فنی**
+
+- `sitemap.xml` داینامیک: صفحات ثابت + دسته‌ها + صفحه‌بندی‌ها + تک‌تک محصولات و خدمات (با `lastModified` واقعی).
+- `robots.txt` با مسدودسازی `/api/`، `/search` و `?q=` و ربات‌های اسکرپر.
+- ریدایرکت ۳۰۱ برای مسیرهای جایگزین (`/home`, `/index`, `/product`, …).
+- سلسله‌مراتب صحیح تیترها: دقیقاً یک `h1` در هر صفحه، سپس `h2`/`h3`.
+- `alt` توصیفی و یکتا برای همه تصاویر، `priority` روی تصاویر above-the-fold.
+- هدرهای امنیتی + `Cache-Control` طولانی روی `/images`.
+- `lang="fa"` و `dir="rtl"`، لینک «پرش به محتوای اصلی»، فوکوس‌رینگ قابل مشاهده.
+- URLهای لاتین تمیز و معنادار (`/category/gol-va-taj-gol`، `/product/taj-gol-do-tabaghe`).
+
+---
+
+## دیپلوی
+
+راهنمای کامل و گام‌به‌گام در [`deploy/DEPLOY.md`](deploy/DEPLOY.md) است — شامل آماده‌سازی سرور
+Ubuntu، تنظیمات دقیق کلادفلر، Nginx، systemd، بکاپ خودکار و عیب‌یابی.
+
+```
+deploy/
+├─ DEPLOY.md          # راهنمای فارسی گام‌به‌گام
+├─ setup-server.sh    # نصب Node، MongoDB، Nginx، فایروال (یک‌بار)
+├─ nginx-amorz.conf   # ریورس پروکسی + IP واقعی کلادفلر + کش استاتیک
+├─ proxy-amorz.conf   # هدرهای مشترک پروکسی
+├─ amorz.service      # سرویس systemd
+├─ deploy.sh          # آپدیت از Git با بازگشت خودکار در صورت شکست بیلد
+└─ backup.sh          # بکاپ روزانه دیتابیس و تصاویر
+```
+
+## کارهایی که پس از تحویل باید انجام دهید
+
+1. `NEXT_PUBLIC_SITE_URL` را روی دامنه واقعی تنظیم کنید (روی همه canonicalها و sitemap اثر مستقیم دارد).
+2. شماره تلفن‌ها و نشانی را در `.env` یا `src/lib/site.js` واقعی کنید.
+3. تصاویر واقعی محصولات را جایگزین SVGهای موقت در `public/images/` کنید و مسیرشان را در فیلد `image` هر آیتم بگذارید.
+4. `public/images/og-default.png` را با یک تصویر برندشده فارسی جایگزین کنید.
+5. `GOOGLE_SITE_VERIFICATION` را بگذارید و `sitemap.xml` را در سرچ کنسول ثبت کنید.
+6. صفحات را با [Rich Results Test](https://search.google.com/test/rich-results) بررسی کنید.
+
+## به‌روزرسانی کش بعد از تغییر داده
+
+```bash
+curl -X POST "https://amorz.ir/api/revalidate?secret=SEED_SECRET&path=/category/gol-va-taj-gol"
+```
+
+بدون `path`، صفحه اصلی و فهرست‌ها و sitemap بازسازی می‌شوند.

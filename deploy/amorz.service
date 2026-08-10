@@ -1,0 +1,44 @@
+# /etc/systemd/system/amorz.service
+#
+# systemctl daemon-reload
+# systemctl enable --now amorz
+# journalctl -u amorz -f     ← مشاهده لاگ زنده
+
+[Unit]
+Description=Amorz Next.js application
+Documentation=https://amorz.ir
+After=network.target mongod.service
+Wants=mongod.service
+
+[Service]
+Type=simple
+User=amorz
+Group=amorz
+WorkingDirectory=/var/www/amorz
+
+EnvironmentFile=/var/www/amorz/.env
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=127.0.0.1
+
+ExecStart=/usr/bin/npm run start
+ExecReload=/bin/kill -HUP $MAINPID
+
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=20
+
+# محدودسازی دسترسی‌های سیستمی
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/var/www/amorz
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=amorz
+
+[Install]
+WantedBy=multi-user.target

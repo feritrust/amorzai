@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+build
+.env
+.env.local
+.env*.local
+.DS_Store
+npm-debug.log*
+*.tsbuildinfo
+.vercel
+
+# تصاویر آپلودشده از پنل (خود پوشه بماند)
+public/uploads/*
+!public/uploads/.gitkeep

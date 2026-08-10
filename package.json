@@ -1,0 +1,25 @@
+{
+  "name": "amorz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "آمرز — مرجع خدمات و محصولات مراسم ترحیم در بهشت زهرا",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "node scripts/seed.mjs"
+  },
+  "dependencies": {
+    "marked": "^15.0.6",
+    "mongoose": "^8.9.5",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17"
+  }
+}
