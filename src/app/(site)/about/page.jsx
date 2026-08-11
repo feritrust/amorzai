@@ -3,7 +3,7 @@ import CallCta from '@/components/CallCta';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
 import { breadcrumbSchema, buildMetadata } from '@/lib/seo';
-import { site } from '@/lib/site';
+import { getSettings } from '@/lib/queries';
 
 export const revalidate = 86400;
 
@@ -14,7 +14,8 @@ export const metadata = buildMetadata({
   path: '/about',
 });
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const s = await getSettings();
   const crumbs = [
     { name: 'خانه', path: '/' },
     { name: 'درباره آمرز', path: '/about' },
@@ -106,8 +107,8 @@ export default function AboutPage() {
             است هزینه حمل جداگانه محاسبه گردد.
           </p>
           <p>
-            نشانی دفتر: {site.address.street}، {site.address.city}. ساعات پاسخگویی:{' '}
-            {site.openingHours}.
+            نشانی دفتر: {s.address.street}، {s.address.city}. ساعات پاسخگویی:{' '}
+            {s.openingHours}.
           </p>
         </div>
       </section>

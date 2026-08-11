@@ -1,9 +1,13 @@
+import { Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
+import Analytics from '@/components/Analytics';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
+import { getSettings } from '@/lib/queries';
 
-export default function SiteLayout({ children }) {
+export default async function SiteLayout({ children }) {
+  const s = await getSettings();
   return (
     <>
       <a
@@ -17,7 +21,11 @@ export default function SiteLayout({ children }) {
       <main id="main">{children}</main>
       <Footer />
 
-      <JsonLd data={[organizationSchema(), websiteSchema()]} />
+      <JsonLd data={[organizationSchema(s), websiteSchema()]} />
+
+      <Suspense fallback={null}>
+        <Analytics />
+      </Suspense>
     </>
   );
 }

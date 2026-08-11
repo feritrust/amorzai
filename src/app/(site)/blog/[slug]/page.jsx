@@ -8,12 +8,12 @@ import Faq from '@/components/Faq';
 import CallCta from '@/components/CallCta';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
-import { getArticle, getCategories, getItemsByRefs, getPublishedArticles, getRelatedArticles } from '@/lib/queries';
+import { getArticle, getCategories, getItemsByRefs, getPublishedArticles, getRelatedArticles, getSettings } from '@/lib/queries';
 import { abs, breadcrumbSchema, buildMetadata, faqSchema } from '@/lib/seo';
 import { renderMarkdown, plainText } from '@/lib/markdown';
 import { faDate } from '@/lib/date';
 import { clamp, toFa } from '@/lib/utils';
-import { site } from '@/lib/site';
+import { site, telHref } from '@/lib/site';
 
 export const revalidate = 3600;
 
@@ -46,12 +46,13 @@ export default async function ArticlePage({ params }) {
   if (!article) notFound();
 
   const { html, headings, minutes } = renderMarkdown(article.content);
-  const [related, relatedItems, categories] = await Promise.all([
+  const [related, relatedItems, categories, s] = await Promise.all([
     getRelatedArticles(article, 3),
     getItemsByRefs(article.relatedItems),
     getCategories(),
+    getSettings(),
   ]);
-  const titleOf = (s) => categories.find((c) => c.slug === s)?.shortTitle;
+  const titleOf = (slugName) => categories.find((c) => c.slug === slugName)?.shortTitle;
 
   const crumbs = [
     { name: 'خانه', path: '/' },
@@ -151,8 +152,8 @@ export default async function ArticlePage({ params }) {
                 <p className="mb-4 text-[12px] leading-7 text-sage-100">
                   اگر سوالی درباره برگزاری مراسم دارید، تماس بگیرید. پاسخگویی شبانه‌روزی است.
                 </p>
-                <a href={`tel:+98${site.phone.replace(/^0/, '')}`} className="btn w-full bg-white text-sage-900 hover:bg-sage-50">
-                  {toFa(site.phone)}
+                <a href={telHref(s.phone)} className="btn w-full bg-white text-sage-900 hover:bg-sage-50">
+                  {toFa(s.phone)}
                 </a>
               </div>
             </div>

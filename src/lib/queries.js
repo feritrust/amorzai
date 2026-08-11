@@ -4,6 +4,8 @@ import CategoryModel from '@/models/Category';
 import ProductModel from '@/models/Product';
 import ServiceModel from '@/models/Service';
 import ArticleModel from '@/models/Article';
+import SettingModel from '@/models/Setting';
+import { site } from '@/lib/site';
 import { categories as seedCategories, products as seedProducts, services as seedServices } from '@/data/seed';
 import { articles as seedArticles } from '@/data/articles';
 import { PAGE_SIZE } from '@/lib/site';
@@ -154,6 +156,64 @@ export const getCategoryCounts = cache(async () => {
     acc[i.category] = (acc[i.category] || 0) + 1;
     return acc;
   }, {});
+});
+
+/* ------------------------------------------------------------------ */
+/*  تنظیمات سایت                                                       */
+/* ------------------------------------------------------------------ */
+
+const pick = (value, fallback) =>
+  value === undefined || value === null || value === '' ? fallback : value;
+
+/**
+ * تنظیمات قابل ویرایش از پنل، ادغام‌شده روی مقادیر پیش‌فرض src/lib/site.js.
+ * خروجی دقیقاً هم‌شکل شیء `site` است تا در همه کامپوننت‌ها جایگزین شود.
+ */
+export const getSettings = cache(async () => {
+  let doc = null;
+  if (hasDatabase()) {
+    const conn = await dbConnect();
+    if (conn) {
+      try {
+        doc = await SettingModel.findOne({ key: 'main' }).lean();
+      } catch {
+        doc = null;
+      }
+    }
+  }
+  const s = doc || {};
+
+  return {
+    ...site,
+    name: pick(s.siteName, site.name),
+    legalName: pick(s.siteName, site.name) === site.name ? site.legalName : `${s.siteName} | ${site.slogan}`,
+    slogan: pick(s.slogan, site.slogan),
+    description: pick(s.description, site.description),
+    phone: pick(s.phone, site.phone),
+    mobile: pick(s.mobile, site.mobile),
+    email: pick(s.email, site.email),
+    address: {
+      street: pick(s.addressStreet, site.address.street),
+      city: pick(s.addressCity, site.address.city),
+      region: site.address.region,
+      postalCode: pick(s.postalCode, site.address.postalCode),
+      country: site.address.country,
+    },
+    geo: {
+      lat: pick(s.geoLat, site.geo.lat),
+      lng: pick(s.geoLng, site.geo.lng),
+    },
+    openingHours: pick(s.openingHours, site.openingHours),
+    footerAbout: pick(
+      s.footerAbout,
+      'آمرز مجموعه‌ای برای تأمین گل، سنگ مزار، تجهیزات، پذیرایی و خدمات مراسم ترحیم در بهشت زهرا (س) است. قیمت‌ها شفاف اعلام می‌شود و سفارش تنها به‌صورت تلفنی ثبت می‌گردد.'
+    ),
+    social: {
+      instagram: pick(s.instagram, site.social.instagram),
+      telegram: pick(s.telegram, site.social.telegram),
+      whatsapp: pick(s.whatsapp, ''),
+    },
+  };
 });
 
 /* ------------------------------------------------------------------ */

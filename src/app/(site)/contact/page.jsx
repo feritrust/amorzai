@@ -2,7 +2,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
 import { abs, breadcrumbSchema, buildMetadata, organizationSchema } from '@/lib/seo';
-import { site, telHref } from '@/lib/site';
+import { telHref } from '@/lib/site';
+import { getSettings } from '@/lib/queries';
 import { toFa } from '@/lib/utils';
 
 export const revalidate = 86400;
@@ -14,17 +15,18 @@ export const metadata = buildMetadata({
   path: '/contact',
 });
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const s = await getSettings();
   const crumbs = [
     { name: 'خانه', path: '/' },
     { name: 'تماس با ما', path: '/contact' },
   ];
 
   const items = [
-    { icon: 'phone', label: 'تلفن ثابت', value: toFa(site.phone), href: telHref(site.phone) },
-    { icon: 'phone', label: 'موبایل و واتساپ', value: toFa(site.mobile), href: telHref(site.mobile) },
-    { icon: 'pin', label: 'نشانی', value: `${site.address.street}، ${site.address.city}` },
-    { icon: 'clock', label: 'ساعات پاسخگویی', value: site.openingHours },
+    { icon: 'phone', label: 'تلفن ثابت', value: toFa(s.phone), href: telHref(s.phone) },
+    { icon: 'phone', label: 'موبایل و واتساپ', value: toFa(s.mobile), href: telHref(s.mobile) },
+    { icon: 'pin', label: 'نشانی', value: `${s.address.street}، ${s.address.city}` },
+    { icon: 'clock', label: 'ساعات پاسخگویی', value: s.openingHours },
   ];
 
   return (
@@ -90,7 +92,7 @@ export default function ContactPage() {
       <JsonLd
         data={[
           breadcrumbSchema(crumbs),
-          organizationSchema(),
+          organizationSchema(s),
           {
             '@context': 'https://schema.org',
             '@type': 'ContactPage',

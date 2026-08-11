@@ -80,8 +80,8 @@ export default function EntityForm({ entityKey, entityLabel, fields, doc, catego
       const res = await saveEntityAction(entityKey, doc?._id || null, payload);
       if (res.ok) {
         setMessage({ type: 'ok', text: 'با موفقیت ذخیره شد و صفحات مرتبط سایت به‌روز شدند.' });
-        if (!doc) router.replace(`/admin/${entityKey}/${res.id}`);
-        else router.refresh();
+        if (res.settings || doc) router.refresh();
+        else router.replace(`/admin/${entityKey}/${res.id}`);
       } else {
         setErrors(res.errors || {});
         setMessage({ type: 'error', text: res.errors?._form || 'لطفاً خطاهای فرم را برطرف کنید.' });
@@ -132,7 +132,7 @@ export default function EntityForm({ entityKey, entityLabel, fields, doc, catego
           </div>
 
           <div className="flex shrink-0 gap-2">
-            <Link href={`/admin/${entityKey}`} className="btn-outline !px-4 !py-2.5 text-xs">
+            <Link href={entityKey === 'settings' ? '/admin' : `/admin/${entityKey}`} className="btn-outline !px-4 !py-2.5 text-xs">
               بازگشت
             </Link>
             <button type="submit" disabled={pending} className="btn-primary !px-6 !py-2.5 text-xs">

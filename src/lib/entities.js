@@ -205,7 +205,59 @@ export const ENTITIES = {
   },
 };
 
+/**
+ * تنظیمات سایت — تک‌رکوردی است، پس در فهرست موجودیت‌های پنل نمی‌آید
+ * و صفحه اختصاصی خودش را دارد (/admin/settings).
+ */
+export const SETTINGS_ENTITY = {
+  key: 'settings',
+  model: 'Setting',
+  label: 'تنظیمات سایت',
+  singular: 'تنظیمات',
+  singleton: true,
+  fields: [
+    { name: 'siteName', label: 'نام سایت', type: 'text', group: 'brand', placeholder: 'آمرز' },
+    { name: 'slogan', label: 'شعار', type: 'text', group: 'brand', placeholder: 'همراه شما در برگزاری آبرومند مراسم ترحیم' },
+    {
+      name: 'description',
+      label: 'توضیح پیش‌فرض سایت',
+      type: 'textarea',
+      rows: 3,
+      group: 'brand',
+      max: 170,
+      help: 'در Schema و به‌عنوان توضیح پیش‌فرض صفحاتی که توضیح اختصاصی ندارند استفاده می‌شود.',
+    },
+    {
+      name: 'footerAbout',
+      label: 'متن معرفی در فوتر',
+      type: 'textarea',
+      rows: 3,
+      group: 'brand',
+    },
+
+    { name: 'phone', label: 'تلفن ثابت', type: 'text', group: 'contact', placeholder: '02155005000', help: 'بدون خط تیره و فاصله بنویسید.' },
+    { name: 'mobile', label: 'موبایل', type: 'text', group: 'contact', placeholder: '09120000000' },
+    { name: 'email', label: 'ایمیل', type: 'text', group: 'contact' },
+    { name: 'openingHours', label: 'ساعات پاسخگویی', type: 'text', group: 'contact', placeholder: 'شبانه‌روزی — ۷ روز هفته' },
+
+    { name: 'addressStreet', label: 'نشانی', type: 'text', group: 'address' },
+    { name: 'addressCity', label: 'شهر', type: 'text', group: 'address' },
+    { name: 'postalCode', label: 'کد پستی', type: 'text', group: 'address' },
+    { name: 'geoLat', label: 'عرض جغرافیایی', type: 'number', group: 'address', help: 'برای Schema نقشه؛ از گوگل مپ کپی کنید.' },
+    { name: 'geoLng', label: 'طول جغرافیایی', type: 'number', group: 'address' },
+
+    { name: 'instagram', label: 'اینستاگرام', type: 'text', group: 'social', placeholder: 'https://instagram.com/...' },
+    { name: 'telegram', label: 'تلگرام', type: 'text', group: 'social', placeholder: 'https://t.me/...' },
+    { name: 'whatsapp', label: 'واتساپ', type: 'text', group: 'social', placeholder: 'https://wa.me/98...' },
+  ],
+  revalidate: () => ['/', '/contact', '/about', '/products', '/services', '/categories', '/blog'],
+};
+
 export const GROUPS = {
+  brand: 'هویت سایت',
+  contact: 'اطلاعات تماس',
+  address: 'نشانی و موقعیت',
+  social: 'شبکه‌های اجتماعی',
   main: 'محتوای اصلی',
   price: 'قیمت و موجودی',
   media: 'تصویر',
@@ -217,5 +269,6 @@ export const GROUPS = {
 export const ENTITY_KEYS = Object.keys(ENTITIES);
 
 export function getEntity(key) {
+  if (key === 'settings') return SETTINGS_ENTITY;
   return ENTITIES[key] || null;
 }

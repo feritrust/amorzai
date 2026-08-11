@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { site, telHref } from '@/lib/site';
+import { telHref } from '@/lib/site';
+import { getSettings } from '@/lib/queries';
 import { toFa } from '@/lib/utils';
 import Icon from '@/components/Icons';
 
-export default function Hero() {
+export default async function Hero() {
+  const s = await getSettings();
   const points = [
     'قیمت شفاف و بدون هزینه پنهان',
     'پاسخگویی شبانه‌روزی، ۷ روز هفته',
@@ -52,9 +54,9 @@ export default function Hero() {
           </ul>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <a href={telHref(site.phone)} className="btn-primary">
+            <a href={telHref(s.phone)} className="btn-primary">
               <Icon name="phone" className="h-4 w-4" />
-              تماس و رزرو: <span className="font-extrabold">{toFa(site.phone)}</span>
+              تماس و رزرو: <span className="font-extrabold">{toFa(s.phone)}</span>
             </a>
             <Link href="/categories" className="btn-outline">
               مشاهده همه خدمات و قیمت‌ها

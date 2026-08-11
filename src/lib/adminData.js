@@ -3,6 +3,7 @@ import CategoryModel from '@/models/Category';
 import ProductModel from '@/models/Product';
 import ServiceModel from '@/models/Service';
 import ArticleModel from '@/models/Article';
+import SettingModel from '@/models/Setting';
 import { getEntity } from '@/lib/entities';
 import { isValidSlug } from '@/lib/slugify';
 
@@ -11,6 +12,7 @@ const MODELS = {
   Product: ProductModel,
   Service: ServiceModel,
   Article: ArticleModel,
+  Setting: SettingModel,
 };
 
 export class DbUnavailableError extends Error {
@@ -142,6 +144,24 @@ export function parseEntityPayload(entityKey, raw) {
   }
 
   return { values, errors };
+}
+
+/** خواندن سند تک‌رکوردی تنظیمات (در صورت نبود، شیء خالی) */
+export async function adminGetSettings() {
+  await requireDb();
+  const doc = await SettingModel.findOne({ key: 'main' }).lean();
+  return doc ? serialize(doc) : {};
+}
+
+/** ذخیره تنظیمات تک‌رکوردی */
+export async function adminSaveSettings(values) {
+  await requireDb();
+  const doc = await SettingModel.findOneAndUpdate(
+    { key: 'main' },
+    { $set: { ...values, key: 'main' } },
+    { new: true, upsert: true, runValidators: true }
+  ).lean();
+  return { ok: true, doc: serialize(doc) };
 }
 
 /** ایجاد یا به‌روزرسانی. در صورت تکراری بودن اسلاگ خطای خوانا برمی‌گرداند. */

@@ -4,6 +4,7 @@ import { adminCount } from '@/lib/adminData';
 import { hasDatabase } from '@/lib/mongodb';
 import Icon from '@/components/Icons';
 import RevalidateButton from '@/components/admin/RevalidateButton';
+import { getAnalytics } from '@/lib/analytics';
 import { toFa } from '@/lib/utils';
 
 export const dynamic = 'force-dynamic';
@@ -20,6 +21,15 @@ export default async function AdminDashboard() {
   const counts = hasDatabase()
     ? Object.fromEntries(await Promise.all(ENTITY_KEYS.map(async (k) => [k, await safeCount(k)])))
     : {};
+
+  let stats = null;
+  if (hasDatabase()) {
+    try {
+      stats = await getAnalytics({ range: 30 });
+    } catch {
+      stats = null;
+    }
+  }
 
   return (
     <div className="space-y-8">
@@ -46,6 +56,30 @@ export default async function AdminDashboard() {
           );
         })}
       </div>
+
+      {stats?.available ? (
+        <section className="card p-6">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <h2 className="text-[15px] font-bold">آمار بازدید</h2>
+            <Link href="/admin/analytics" className="text-[13px] font-semibold text-sage-700 hover:text-sage-900">
+              گزارش کامل
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              { label: 'بازدید امروز', v: stats.today.views, s: `${toFa(stats.today.visitors)} نفر` },
+              { label: '۷ روز گذشته', v: stats.week.views, s: `${toFa(stats.week.visitors)} نفر` },
+              { label: '۳۰ روز گذشته', v: stats.total.views, s: `${toFa(stats.total.visitors)} نفر` },
+            ].map((b) => (
+              <div key={b.label} className="rounded-xl bg-[#FAF8F5] p-4">
+                <span className="mb-1 block text-[12px] text-ink-muted">{b.label}</span>
+                <strong className="text-xl font-extrabold">{toFa(b.v)}</strong>
+                <span className="mr-2 text-[12px] text-ink-muted">{b.s}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="card p-6">
         <h2 className="mb-2 text-[15px] font-bold">به‌روزرسانی دستی کش سایت</h2>

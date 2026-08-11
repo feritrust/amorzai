@@ -76,32 +76,35 @@ export function buildMetadata({
 const ORG_ID = `${site.url}/#organization`;
 const WEBSITE_ID = `${site.url}/#website`;
 
-export function organizationSchema() {
+/**
+ * @param s تنظیمات سایت (خروجی getSettings). اگر پاس داده نشود، مقادیر پیش‌فرض استفاده می‌شود.
+ */
+export function organizationSchema(s = site) {
   return {
     '@context': 'https://schema.org',
     '@type': ['Organization', 'LocalBusiness'],
     '@id': ORG_ID,
-    name: site.legalName,
-    alternateName: site.name,
+    name: s.legalName,
+    alternateName: s.name,
     url: site.url,
     logo: { '@type': 'ImageObject', url: abs('/images/logo.svg'), width: 512, height: 512 },
     image: abs('/images/og-default.png'),
-    description: site.description,
-    slogan: site.slogan,
-    telephone: `+98${site.phone.replace(/^0/, '')}`,
-    email: site.email,
+    description: s.description,
+    slogan: s.slogan,
+    telephone: `+98${String(s.phone).replace(/^0/, '')}`,
+    email: s.email,
     priceRange: '$$',
     currenciesAccepted: 'IRR',
     paymentAccepted: 'نقدی، کارت به کارت',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.address.street,
-      addressLocality: site.address.city,
-      addressRegion: site.address.region,
-      postalCode: site.address.postalCode,
-      addressCountry: site.address.country,
+      streetAddress: s.address.street,
+      addressLocality: s.address.city,
+      addressRegion: s.address.region,
+      postalCode: s.address.postalCode,
+      addressCountry: s.address.country,
     },
-    geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+    geo: { '@type': 'GeoCoordinates', latitude: s.geo.lat, longitude: s.geo.lng },
     areaServed: { '@type': 'City', name: 'تهران' },
     openingHoursSpecification: [
       {
@@ -111,7 +114,7 @@ export function organizationSchema() {
         closes: '23:59',
       },
     ],
-    sameAs: Object.values(site.social),
+    sameAs: Object.values(s.social || {}).filter(Boolean),
   };
 }
 

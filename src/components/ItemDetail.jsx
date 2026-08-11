@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getCategories, getRelated, getSettings } from '@/lib/queries';
 import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ItemCard from '@/components/ItemCard';
@@ -6,8 +7,7 @@ import Faq from '@/components/Faq';
 import CallCta from '@/components/CallCta';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
-import { getCategories, getRelated } from '@/lib/queries';
-import { site, telHref } from '@/lib/site';
+import { telHref } from '@/lib/site';
 import { formatPrice, toFa } from '@/lib/utils';
 import { breadcrumbSchema, productSchema, serviceSchema } from '@/lib/seo';
 
@@ -15,6 +15,7 @@ export default async function ItemDetail({ item, category }) {
   const [related, categories] = await Promise.all([getRelated(item, 4), getCategories()]);
   const titleOf = (slug) => categories.find((c) => c.slug === slug)?.shortTitle;
   const isProduct = item.type === 'product';
+  const s = await getSettings();
 
   const crumbs = [
     { name: 'خانه', path: '/' },
@@ -75,13 +76,13 @@ export default async function ItemDetail({ item, category }) {
             </p>
 
             <div className="flex flex-col gap-2.5 sm:flex-row">
-              <a href={telHref(site.phone)} className="btn-primary flex-1">
+              <a href={telHref(s.phone)} className="btn-primary flex-1">
                 <Icon name="phone" className="h-4 w-4" />
-                <span className="font-extrabold tracking-wide">{toFa(site.phone)}</span>
+                <span className="font-extrabold tracking-wide">{toFa(s.phone)}</span>
               </a>
-              <a href={telHref(site.mobile)} className="btn-outline flex-1">
+              <a href={telHref(s.mobile)} className="btn-outline flex-1">
                 <Icon name="phone" className="h-4 w-4" />
-                {toFa(site.mobile)}
+                {toFa(s.mobile)}
               </a>
             </div>
           </div>

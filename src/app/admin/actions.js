@@ -4,7 +4,14 @@ import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { AUTH_COOKIE, SESSION_MAX_AGE, createToken, passwordMatches } from '@/lib/auth';
-import { adminDelete, adminSave, categoryUsage, parseEntityPayload, DbUnavailableError } from '@/lib/adminData';
+import {
+  adminDelete,
+  adminSave,
+  adminSaveSettings,
+  categoryUsage,
+  parseEntityPayload,
+  DbUnavailableError,
+} from '@/lib/adminData';
 import { getEntity } from '@/lib/entities';
 
 /* ----------------------------- ورود و خروج ----------------------------- */
@@ -65,6 +72,14 @@ export async function saveEntityAction(entityKey, id, payload) {
   if (Object.keys(errors).length) return { ok: false, errors };
 
   try {
+    // تنظیمات تک‌رکوردی است و اسلاگ ندارد
+    if (entity.singleton) {
+      const saved = await adminSaveSettings(values);
+      revalidateFor(entityKey, saved.doc);
+      revalidatePath('/admin/settings');
+      return { ok: true, id: saved.doc._id, settings: true };
+    }
+
     const result = await adminSave(entityKey, id, values);
     if (!result.ok) return result;
 

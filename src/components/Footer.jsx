@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { getCategories } from '@/lib/queries';
-import { site, telHref } from '@/lib/site';
+import { getCategories, getSettings } from '@/lib/queries';
+import { telHref } from '@/lib/site';
 import { toFa } from '@/lib/utils';
 import Icon from '@/components/Icons';
 
 export default async function Footer() {
   const categories = await getCategories();
+  const s = await getSettings();
   const year = toFa(new Date().getFullYear());
 
   return (
@@ -18,10 +19,7 @@ export default async function Footer() {
             </span>
             <span className="text-lg font-extrabold">آمرز</span>
           </div>
-          <p className="text-sm leading-8 text-ink-muted">
-            آمرز مجموعه‌ای برای تأمین گل، سنگ مزار، تجهیزات، پذیرایی و خدمات مراسم ترحیم در بهشت
-            زهرا (س) است. قیمت‌ها شفاف اعلام می‌شود و سفارش تنها به‌صورت تلفنی ثبت می‌گردد.
-          </p>
+          <p className="text-sm leading-8 text-ink-muted">{s.footerAbout}</p>
         </div>
 
         <nav aria-label="دسته‌بندی محصولات">
@@ -58,24 +56,24 @@ export default async function Footer() {
           <h2 className="mb-4 text-sm font-bold text-ink">تماس با آمرز</h2>
           <ul className="space-y-3 text-sm text-ink-muted">
             <li>
-              <a href={telHref(site.phone)} className="flex items-center gap-2 hover:text-sage-700">
+              <a href={telHref(s.phone)} className="flex items-center gap-2 hover:text-sage-700">
                 <Icon name="phone" className="h-4 w-4 text-sage-400" />
-                <span className="font-bold text-ink">{toFa(site.phone)}</span>
+                <span className="font-bold text-ink">{toFa(s.phone)}</span>
               </a>
             </li>
             <li>
-              <a href={telHref(site.mobile)} className="flex items-center gap-2 hover:text-sage-700">
+              <a href={telHref(s.mobile)} className="flex items-center gap-2 hover:text-sage-700">
                 <Icon name="phone" className="h-4 w-4 text-sage-400" />
-                {toFa(site.mobile)}
+                {toFa(s.mobile)}
               </a>
             </li>
             <li className="flex items-start gap-2">
               <Icon name="pin" className="mt-1 h-4 w-4 shrink-0 text-sage-400" />
-              {site.address.street}، {site.address.city}
+              {s.address.street}، {s.address.city}
             </li>
             <li className="flex items-center gap-2">
               <Icon name="clock" className="h-4 w-4 text-sage-400" />
-              {site.openingHours}
+              {s.openingHours}
             </li>
           </ul>
 
@@ -92,27 +90,25 @@ export default async function Footer() {
             </li>
           </ul>
 
-          <ul className="mt-5 flex gap-3 text-sm">
-            <li>
-              <a
-                href={site.social.instagram}
-                rel="noopener noreferrer nofollow"
-                target="_blank"
-                className="rounded-lg border border-line px-3 py-2 hover:border-sage-400 hover:text-sage-700"
-              >
-                اینستاگرام
-              </a>
-            </li>
-            <li>
-              <a
-                href={site.social.telegram}
-                rel="noopener noreferrer nofollow"
-                target="_blank"
-                className="rounded-lg border border-line px-3 py-2 hover:border-sage-400 hover:text-sage-700"
-              >
-                تلگرام
-              </a>
-            </li>
+          <ul className="mt-5 flex flex-wrap gap-3 text-sm">
+            {[
+              { href: s.social.instagram, label: 'اینستاگرام' },
+              { href: s.social.telegram, label: 'تلگرام' },
+              { href: s.social.whatsapp, label: 'واتساپ' },
+            ]
+              .filter((l) => l.href)
+              .map((l) => (
+                <li key={l.label}>
+                  <a
+                    href={l.href}
+                    rel="noopener noreferrer nofollow"
+                    target="_blank"
+                    className="rounded-lg border border-line px-3 py-2 hover:border-sage-400 hover:text-sage-700"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

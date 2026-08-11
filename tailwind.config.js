@@ -10,10 +10,11 @@ module.exports = {
     extend: {
       colors: {
         paper: '#FAF8F5',
+        // کنتراست همه این رنگ‌ها روی پس‌زمینه paper بالاتر از حد استاندارد WCAG AA است
         ink: {
-          DEFAULT: '#1B1F1D',
-          soft: '#3A403C',
-          muted: '#6E756F',
+          DEFAULT: '#161A18',
+          soft: '#2F3532',
+          muted: '#565D58', // قبلاً #6E756F بود و روی متن‌های ریز خوانا نبود
         },
         line: '#E7E2DA',
         sage: {

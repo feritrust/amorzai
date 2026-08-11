@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { getCategories } from '@/lib/queries';
-import { site, telHref } from '@/lib/site';
+import { getCategories, getSettings } from '@/lib/queries';
+import { telHref } from '@/lib/site';
 import { toFa } from '@/lib/utils';
 import Icon from '@/components/Icons';
 import MobileMenu from '@/components/MobileMenu';
 
 export default async function Header() {
   const categories = await getCategories();
+  const s = await getSettings();
   const productCats = categories.filter((c) => c.kind === 'product');
   const serviceCats = categories.filter((c) => c.kind === 'service');
 
@@ -21,17 +22,17 @@ export default async function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur">
-      {/* نوار بالایی */}
-      <div className="hidden border-b border-line/70 bg-sage-900 text-sage-100 lg:block">
-        <div className="container flex h-9 items-center justify-between text-xs">
+    <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur supports-[backdrop-filter]:bg-paper/85">
+      {/* نوار بالایی — متن سفید روی زمینه تیره برای بیشترین خوانایی */}
+      <div className="hidden bg-sage-900 text-white lg:block">
+        <div className="container flex h-10 items-center justify-between text-[13px] font-medium">
           <p className="flex items-center gap-2">
-            <Icon name="clock" className="h-4 w-4" />
+            <Icon name="clock" className="h-4 w-4 text-gold-400" />
             پاسخگویی شبانه‌روزی، ۷ روز هفته
           </p>
           <p className="flex items-center gap-2">
-            <Icon name="pin" className="h-4 w-4" />
-            {site.address.street}
+            <Icon name="pin" className="h-4 w-4 text-gold-400" />
+            {s.address.street}
           </p>
         </div>
       </div>
@@ -43,7 +44,7 @@ export default async function Header() {
           </span>
           <span className="leading-tight">
             <span className="block text-lg font-extrabold text-ink">آمرز</span>
-            <span className="block text-[11px] text-ink-muted">خدمات مراسم ترحیم</span>
+            <span className="block text-[12px] font-medium text-ink-soft">خدمات مراسم ترحیم</span>
           </span>
         </Link>
 
@@ -53,7 +54,7 @@ export default async function Header() {
               <li key={item.href} className="group relative">
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-ink-soft hover:bg-sage-50 hover:text-sage-700"
+                  className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-semibold text-ink hover:bg-sage-50 hover:text-sage-700"
                 >
                   {item.label}
                 </Link>
@@ -67,7 +68,7 @@ export default async function Header() {
                             href={c.href}
                             className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-ink-soft hover:bg-sage-50 hover:text-sage-700"
                           >
-                            <Icon name={c.icon} className="h-4 w-4 text-sage-400" />
+                            <Icon name={c.icon} className="h-4 w-4 text-sage-600" />
                             {c.shortTitle}
                           </Link>
                         </li>
@@ -84,9 +85,9 @@ export default async function Header() {
           <Link href="/search" className="hidden rounded-lg p-2 text-ink-soft hover:bg-sage-50 sm:block" aria-label="جستجو">
             <Icon name="search" />
           </Link>
-          <a href={telHref(site.phone)} className="btn-primary !px-4 !py-2.5 text-xs sm:text-sm">
+          <a href={telHref(s.phone)} className="btn-primary !px-4 !py-2.5 text-xs sm:text-sm">
             <Icon name="phone" className="h-4 w-4" />
-            <span className="font-bold tracking-wide">{toFa(site.phone)}</span>
+            <span className="font-bold tracking-wide">{toFa(s.phone)}</span>
           </a>
           <MobileMenu nav={nav} />
         </div>

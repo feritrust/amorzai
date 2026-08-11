@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { getCategories } from '@/lib/queries';
+import { getCategories, getSettings } from '@/lib/queries';
 import Icon from '@/components/Icons';
-import { site, telHref } from '@/lib/site';
+import { telHref } from '@/lib/site';
 import { toFa } from '@/lib/utils';
 
 export default async function NotFoundContent() {
   const categories = await getCategories();
+  const s = await getSettings();
 
   return (
     <div className="container flex flex-col items-center py-20 text-center">
@@ -35,9 +36,9 @@ export default async function NotFoundContent() {
         <Link href="/" className="btn-primary">
           بازگشت به صفحه اصلی
         </Link>
-        <a href={telHref(site.phone)} className="btn-outline">
+        <a href={telHref(s.phone)} className="btn-outline">
           <Icon name="phone" className="h-4 w-4" />
-          {toFa(site.phone)}
+          {toFa(s.phone)}
         </a>
       </div>
     </div>
