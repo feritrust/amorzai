@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { faDate } from '@/lib/date';
 import { readingTime } from '@/lib/markdown';
 import { toFa } from '@/lib/utils';
+import { isPreOptimized } from '@/lib/image';
 
 export default function ArticleCard({ article, priority = false }) {
   return (
@@ -10,6 +11,7 @@ export default function ArticleCard({ article, priority = false }) {
       <Link href={article.href} className="relative block aspect-[16/9] overflow-hidden bg-sage-50">
         <Image
           src={article.cover}
+          unoptimized={isPreOptimized(article.cover)}
           alt={article.coverAlt || article.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

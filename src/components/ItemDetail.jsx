@@ -7,6 +7,7 @@ import Faq from '@/components/Faq';
 import CallCta from '@/components/CallCta';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
+import { isPreOptimized } from '@/lib/image';
 import { telHref } from '@/lib/site';
 import { formatPrice, toFa } from '@/lib/utils';
 import { breadcrumbSchema, productSchema, serviceSchema } from '@/lib/seo';
@@ -33,6 +34,7 @@ export default async function ItemDetail({ item, category }) {
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-sage-50">
           <Image
             src={item.image}
+            unoptimized={isPreOptimized(item.image)}
             alt={`${item.title} — ${category?.title || 'آمرز'} در بهشت زهرا`}
             fill
             sizes="(max-width: 1024px) 100vw, 55vw"

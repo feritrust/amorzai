@@ -13,6 +13,7 @@ import { abs, breadcrumbSchema, buildMetadata, faqSchema } from '@/lib/seo';
 import { renderMarkdown, plainText } from '@/lib/markdown';
 import { faDate } from '@/lib/date';
 import { clamp, toFa } from '@/lib/utils';
+import { isPreOptimized } from '@/lib/image';
 import { site, telHref } from '@/lib/site';
 
 export const revalidate = 3600;
@@ -117,6 +118,7 @@ export default async function ArticlePage({ params }) {
         <div className="relative mx-auto mb-10 aspect-[16/9] max-w-4xl overflow-hidden rounded-2xl border border-line bg-sage-50">
           <Image
             src={article.cover}
+            unoptimized={isPreOptimized(article.cover)}
             alt={article.coverAlt || article.title}
             fill
             sizes="(max-width: 1024px) 100vw, 900px"

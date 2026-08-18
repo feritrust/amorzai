@@ -8,12 +8,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "node scripts/seed.mjs"
+    "seed": "node scripts/seed.mjs",
+    "import:articles": "node scripts/import-articles.mjs",
+    "audit": "node scripts/seo-audit.mjs",
+    "optimize:uploads": "node scripts/optimize-uploads.mjs"
   },
   "dependencies": {
     "marked": "^15.0.6",
     "mongoose": "^8.9.5",
     "next": "^15.1.6",
+    "sharp": "^0.34.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

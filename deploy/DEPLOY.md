@@ -246,6 +246,8 @@ cd /var/www/amorz && ./deploy/deploy.sh
 | صفحه لود می‌شود ولی دکمه‌ها کار نمی‌کنند | Rocket Loader روشن است | خاموشش کنید |
 | تغییرات پنل در سایت دیده نمی‌شود | کش کلادفلر | Browser Cache TTL روی Respect Existing Headers + یک‌بار Purge Cache |
 | آپلود تصویر خطای ۴۱۳ | سقف حجم Nginx | `client_max_body_size` در کانفیگ |
+| تصویر محصول نمایش داده نمی‌شود | دسترسی پوشه برای Nginx | `chmod o+x /var/www /var/www/amorz` و `chmod -R o+rX /var/www/amorz/public` |
+| خطای ۴۰۰ روی `/_next/image` | فایل برای اپلیکیشن قابل خواندن نیست | تصاویر `/uploads/` دیگر از بهینه‌ساز عبور نمی‌کنند؛ فایل خام را با `curl -I` تست کنید |
 | سایت کند است برای کاربر ایرانی | کش نشدن استاتیک‌ها | Tiered Cache روشن، و بررسی هدر `cf-cache-status` |
 
 مشاهده لاگ زنده اپلیکیشن:

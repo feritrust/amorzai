@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatPrice } from '@/lib/utils';
 import Icon from '@/components/Icons';
+import { isPreOptimized } from '@/lib/image';
 
 export default function ItemCard({ item, categoryTitle, priority = false }) {
   return (
@@ -9,6 +10,7 @@ export default function ItemCard({ item, categoryTitle, priority = false }) {
       <Link href={item.href} className="relative block aspect-[4/3] overflow-hidden bg-sage-50">
         <Image
           src={item.image}
+          unoptimized={isPreOptimized(item.image)}
           alt={`${item.title} — ${categoryTitle || 'آمرز'}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
