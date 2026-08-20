@@ -74,7 +74,17 @@ if ! npm run build; then
 fi
 
 log "راه‌اندازی مجدد سرویس"
-sudo systemctl restart amorz
+# -n یعنی هرگز رمز نپرس؛ اگر قانون sudoers نباشد، به‌جای معطل ماندن پشت
+# پرامپت رمز، پیام روشن می‌دهیم. بیلد جدید از قبل روی دیسک است.
+if ! sudo -n systemctl restart amorz 2>/dev/null; then
+  warn "اجازه ری‌استارت بدون رمز وجود ندارد و سرویس ری‌استارت نشد."
+  warn "بیلد جدید آماده است؛ فقط با root این را بزنید:  systemctl restart amorz"
+  warn ""
+  warn "برای اینکه دفعه بعد خودکار انجام شود، یک بار با root:"
+  warn "  printf 'amorz ALL=(root) NOPASSWD: /usr/bin/systemctl restart amorz, /usr/bin/systemctl status amorz, /usr/bin/systemctl reload nginx\\n' > /etc/sudoers.d/amorz"
+  warn "  chmod 440 /etc/sudoers.d/amorz"
+  exit 1
+fi
 
 code=""
 sleep 4
