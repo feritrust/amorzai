@@ -14,6 +14,12 @@ BACKUP_DIR="/var/backups/amorz/next-previous"
 log()  { printf '\n\033[1;32m▸ %s\033[0m\n' "$1"; }
 fail() { printf '\n\033[1;31m✖ %s\033[0m\n' "$1"; exit 1; }
 
+# اجرا با root باعث می‌شود پوشه .next و node_modules مالک root شوند و بعد
+# سرویس (که با کاربر amorz اجرا می‌شود) نتواند کش ISR را بنویسد.
+if [[ $EUID -eq 0 ]]; then
+  fail "این اسکریپت را با root اجرا نکنید. به‌جایش:  sudo -u amorz -H bash -c 'cd $APP_DIR && bash deploy/deploy.sh'"
+fi
+
 cd "$APP_DIR" || fail "پوشه $APP_DIR پیدا نشد"
 [[ -f .env ]] || fail "فایل .env وجود ندارد"
 
