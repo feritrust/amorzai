@@ -9,7 +9,7 @@ author: تیم آمرز
 status: published
 publishedAt: 2026-08-05
 relatedItems: [service:hamahangi-ghosl-kafan-dafn, service:pazirayi-kamel-majles, product:taj-gol-do-tabaghe, service:ejare-sandali-plastiki]
-metaTitle: هزینه مراسم ترحیم در بهشت زهرا | برآورد کامل و سناریوهای بودجه
+metaTitle: هزینه مراسم ترحیم در بهشت زهرا؛ برآورد و سناریوهای بودجه
 metaDescription: تفکیک هزینه‌های مراسم ترحیم در بهشت زهرا؛ تعرفه آرامستان، گل، صندلی، پذیرایی، مداح و سنگ مزار، به‌همراه سه سناریوی بودجه و راه‌های صرفه‌جویی.
 ---
 
