@@ -37,8 +37,15 @@ else
 fi
 
 log "نگه‌داشتن نسخه قبلی برای بازگشت اضطراری"
-rm -rf "$BACKUP_DIR"
-[[ -d .next ]] && cp -r .next "$BACKUP_DIR"
+HAVE_BACKUP=0
+if mkdir -p "$(dirname "$BACKUP_DIR")" 2>/dev/null; then
+  rm -rf "$BACKUP_DIR"
+  if [[ -d .next ]] && cp -r .next "$BACKUP_DIR" 2>/dev/null; then
+    HAVE_BACKUP=1
+  fi
+fi
+# نبود بکاپ نباید جلوی دیپلوی را بگیرد؛ فقط قابلیت بازگشت خودکار را از دست می‌دهیم
+[[ $HAVE_BACKUP -eq 1 ]] || warn "بکاپ نسخه قبلی گرفته نشد — در صورت شکست بیلد، بازگشت خودکار انجام نمی‌شود"
 
 log "بیلد پروداکشن"
 if ! npm run build; then
