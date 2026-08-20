@@ -28,6 +28,7 @@ export default async function sitemap() {
     { url: abs('/products'), lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: abs('/services'), lastModified: now, changeFrequency: 'daily', priority: 0.9 },
     { url: abs('/blog'), lastModified: now, changeFrequency: 'daily', priority: 0.8 },
+    { url: abs('/jostojoye-motevafi'), lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: abs('/about'), lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: abs('/contact'), lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: abs('/faq'), lastModified: now, changeFrequency: 'monthly', priority: 0.6 },

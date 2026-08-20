@@ -79,6 +79,16 @@ export default async function Footer() {
 
           <ul className="mt-5 space-y-2.5 text-sm text-ink-muted">
             <li>
+              <Link href="/jostojoye-motevafi" className="hover:text-sage-700">
+                جستجوی متوفی
+              </Link>
+            </li>
+            <li>
+              <Link href="/categories" className="hover:text-sage-700">
+                همه دسته‌بندی‌ها
+              </Link>
+            </li>
+            <li>
               <Link href="/blog" className="hover:text-sage-700">
                 مجله آمرز
               </Link>

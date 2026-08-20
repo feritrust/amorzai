@@ -10,6 +10,7 @@
     "lint": "next lint",
     "seed": "node scripts/seed.mjs",
     "import:articles": "node scripts/import-articles.mjs",
+    "import:catalog": "node scripts/import-catalog.mjs",
     "audit": "node scripts/seo-audit.mjs",
     "optimize:uploads": "node scripts/optimize-uploads.mjs"
   },
