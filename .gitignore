@@ -13,3 +13,8 @@ npm-debug.log*
 # تصاویر آپلودشده از پنل (خود پوشه بماند)
 public/uploads/*
 !public/uploads/.gitkeep
+
+# خروجی‌های سرچ کنسول و گزارش‌های بررسی — محلی می‌مانند
+seo-data/*
+!seo-data/README.md
+seo-report.md
