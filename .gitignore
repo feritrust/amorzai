@@ -18,3 +18,6 @@ public/uploads/*
 seo-data/*
 !seo-data/README.md
 seo-report.md
+
+# فایل‌های تولیدی برند (با python3 brand/generate.py دوباره ساخته می‌شوند)
+brand/*.png
