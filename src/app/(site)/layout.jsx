@@ -3,8 +3,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import Analytics from '@/components/Analytics';
+import FloatingContact from '@/components/FloatingContact';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
 import { getSettings } from '@/lib/queries';
+import { telHref, waHref } from '@/lib/site';
 
 export default async function SiteLayout({ children }) {
   const s = await getSettings();
@@ -25,6 +27,14 @@ export default async function SiteLayout({ children }) {
 
       <Suspense fallback={null}>
         <Analytics />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <FloatingContact
+          whatsapp={waHref(s.social?.whatsapp || s.mobile, 'سلام. برای هماهنگی خدمات مراسم راهنمایی می‌خواستم.')}
+          telegram={s.social?.telegram || ''}
+          phone={telHref(s.phone)}
+        />
       </Suspense>
     </>
   );

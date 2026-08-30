@@ -219,6 +219,28 @@ export default async function DeceasedSearchPage() {
         </div>
       </section>
 
+      {/* پل به خدمات نیابتی — بخش قابل توجهی از جستجوکنندگان خارج از ایران هستند */}
+      <section className="section pt-0" aria-labelledby="abroad-heading">
+        <div className="rounded-2xl bg-sage-900 p-6 text-white sm:p-9">
+          <span className="chip mb-4 bg-white/10 text-gold-400">
+            <Icon name="pin" className="h-3.5 w-3.5" />
+            خارج از ایران هستید؟
+          </span>
+          <h2 id="abroad-heading" className="mb-3 text-white">
+            مزار را پیدا کردید ولی نمی‌توانید بروید؟
+          </h2>
+          <p className="mb-6 max-w-2xl text-[14px] leading-[2.1] text-sage-100">
+            بسیاری از کسانی که این صفحه را می‌بینند، ایرانیان مقیم خارج از کشورند. آمرز به نیابت
+            از شما سر مزار می‌رود: گل می‌گذارد، فاتحه می‌خواند یا مراسم سالگرد را کامل برگزار
+            می‌کند — و از لحظه انجام کار عکس و فیلم تاریخ‌دار برایتان می‌فرستد.
+          </p>
+          <Link href="/niabat" className="btn bg-white text-sage-900 hover:bg-sage-50">
+            خدمات نیابتی آمرز
+            <Icon name="arrow" className="h-4 w-4 rotate-180" />
+          </Link>
+        </div>
+      </section>
+
       {/* کمک */}
       <section className="section pt-0" aria-labelledby="help-heading">
         <div className="rounded-2xl border border-gold-400/40 bg-gold-100/50 p-6 sm:p-8">

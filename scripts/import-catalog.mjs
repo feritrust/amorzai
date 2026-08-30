@@ -53,7 +53,26 @@ const Service =
   mongoose.models.Service || mongoose.model('Service', new mongoose.Schema(itemFields, { timestamps: true }));
 const Category =
   mongoose.models.Category ||
-  mongoose.model('Category', new mongoose.Schema({ slug: String, title: String }, { strict: false }));
+  mongoose.model(
+    'Category',
+    new mongoose.Schema(
+      {
+        slug: { type: String, required: true, unique: true },
+        title: String,
+        shortTitle: String,
+        kind: { type: String, enum: ['product', 'service'], default: 'service' },
+        order: { type: Number, default: 100 },
+        icon: String,
+        excerpt: String,
+        description: [String],
+        faq: [{ q: String, a: String, _id: false }],
+        metaTitle: { type: String, default: '' },
+        metaDescription: { type: String, default: '' },
+        noindex: { type: Boolean, default: false },
+      },
+      { timestamps: true }
+    )
+  );
 
 const fa = (n) => new Intl.NumberFormat('en-US').format(n);
 
@@ -65,7 +84,7 @@ async function main() {
     process.exit(1);
   }
 
-  const { items } = JSON.parse(fs.readFileSync(CATALOG, 'utf8'));
+  const { items, categories: cats = [] } = JSON.parse(fs.readFileSync(CATALOG, 'utf8'));
   if (!Array.isArray(items) || !items.length) {
     console.error('✖ فایل کاتالوگ آیتمی ندارد.');
     process.exit(1);
@@ -80,8 +99,19 @@ async function main() {
   console.log(`→ اتصال به MongoDB (${process.env.MONGODB_DB || 'amorz'})…${DRY ? ' [حالت آزمایشی]' : ''}\n`);
   await mongoose.connect(URI, { dbName: process.env.MONGODB_DB || 'amorz' });
 
+  // ابتدا دسته‌بندی‌های تعریف‌شده در فایل ساخته یا به‌روز می‌شوند
+  if (cats.length) {
+    for (const c of cats) {
+      const existing = await Category.findOne({ slug: c.slug }).lean();
+      if (!DRY) await Category.updateOne({ slug: c.slug }, { $set: c }, { upsert: true });
+      console.log(`  ${existing ? '✎' : '✔'} دسته ${c.slug} — ${c.title}`);
+    }
+    console.log();
+  }
+
   // اعتبارسنجی دسته‌بندی‌ها پیش از هر تغییری
   const catSlugs = new Set((await Category.find({}, 'slug').lean()).map((c) => c.slug));
+  for (const c of cats) catSlugs.add(c.slug); // در حالت آزمایشی هنوز ساخته نشده‌اند
   const badCats = [...new Set(items.map((i) => i.category))].filter((c) => !catSlugs.has(c));
   if (badCats.length) {
     console.error(`✖ این دسته‌بندی‌ها در دیتابیس نیستند: ${badCats.join('، ')}`);

@@ -79,6 +79,11 @@ export default async function Footer() {
 
           <ul className="mt-5 space-y-2.5 text-sm text-ink-muted">
             <li>
+              <Link href="/niabat" className="hover:text-sage-700">
+                خدمات نیابتی (خارج از کشور)
+              </Link>
+            </li>
+            <li>
               <Link href="/jostojoye-motevafi" className="hover:text-sage-700">
                 جستجوی متوفی
               </Link>

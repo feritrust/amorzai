@@ -14,10 +14,10 @@ export default async function Header() {
   const nav = [
     { href: '/products', label: 'محصولات', children: productCats },
     { href: '/services', label: 'خدمات', children: serviceCats },
+    { href: '/niabat', label: 'خدمات نیابتی' },
     { href: '/jostojoye-motevafi', label: 'جستجوی متوفی' },
     { href: '/blog', label: 'مجله' },
     { href: '/about', label: 'درباره آمرز' },
-    { href: '/faq', label: 'سوالات متداول' },
     { href: '/contact', label: 'تماس با ما' },
   ];
 

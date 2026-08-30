@@ -42,4 +42,16 @@ export const site = {
 // شماره تماس با فرمت بین‌المللی برای لینک tel: و Schema
 export const telHref = (n) => `tel:+98${String(n).replace(/^0/, '')}`;
 
+/**
+ * لینک واتساپ با پیام آماده. اگر لینک کامل در تنظیمات ذخیره شده باشد همان
+ * استفاده می‌شود، وگرنه از شماره موبایل ساخته می‌شود.
+ */
+export function waHref(whatsappOrNumber, text = '') {
+  const raw = String(whatsappOrNumber || '').trim();
+  if (!raw) return '';
+  const query = text ? `?text=${encodeURIComponent(text)}` : '';
+  if (raw.startsWith('http')) return raw.includes('?') ? raw : raw + query;
+  return `https://wa.me/98${raw.replace(/\D/g, '').replace(/^0/, '')}${query}`;
+}
+
 export const PAGE_SIZE = 12;
