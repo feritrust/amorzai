@@ -267,6 +267,17 @@ export default async function NiabatPage() {
             پیدا کردن قطعه و ردیف مزار
           </Link>
         </div>
+        <p className="mt-5 text-[13px] leading-[2] text-ink-soft">
+          پیش از سفارش، خواندن{' '}
+          <Link
+            href="/blog/anjam-omor-mazar-az-kharej-az-keshvar"
+            className="font-semibold text-sage-700 underline underline-offset-4"
+          >
+            راهنمای انجام کارهای مزار از خارج از کشور
+          </Link>{' '}
+          خالی از لطف نیست: روش پرداخت از خارج، اختلاف ساعت برای تماس تصویری و راه‌های
+          اطمینان از انجام واقعی کار در آن توضیح داده شده است.
+        </p>
       </section>
 
       <JsonLd
