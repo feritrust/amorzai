@@ -15,7 +15,7 @@ export default async function Header() {
     { href: '/products', label: 'محصولات', children: productCats },
     { href: '/services', label: 'خدمات', children: serviceCats },
     { href: '/niabat', label: 'خدمات نیابتی' },
-    { href: '/jostojoye-motevafi', label: 'جستجوی متوفی' },
+    { href: '/faq', label: 'سوالات متداول' },
     { href: '/blog', label: 'مجله' },
     { href: '/about', label: 'درباره آمرز' },
     { href: '/contact', label: 'تماس با ما' },

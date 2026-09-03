@@ -4,9 +4,7 @@ import Faq from '@/components/Faq';
 import CallCta from '@/components/CallCta';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
-import { getSettings } from '@/lib/queries';
 import { abs, breadcrumbSchema, buildMetadata, faqSchema } from '@/lib/seo';
-import { telHref } from '@/lib/site';
 import { toFa } from '@/lib/utils';
 
 export const revalidate = 86400;
@@ -52,6 +50,10 @@ const FAQ = [
     q: 'می‌توانم محل قبر را روی نقشه ببینم؟',
     a: 'سامانه رسمی علاوه بر شماره قطعه و ردیف، نقشه آرامستان و مسیرهای دسترسی به قطعات را هم ارائه می‌دهد. برای قطعات بزرگ، بهتر است نقشه را پیش از مراجعه ذخیره کنید.',
   },
+  {
+    q: 'می‌توانید محل دفن را تلفنی برای من استعلام کنید؟',
+    a: 'خیر. اطلاعات محل دفن فقط در سامانه رسمی سازمان بهشت زهرا موجود است و ما به بانک اطلاعات متوفیان دسترسی نداریم؛ آن را هم نگهداری نمی‌کنیم. جستجو در سامانه رسمی رایگان و چند ثانیه‌ای است و راهنمای گام‌به‌گام آن در همین صفحه آمده. آمرز خدمات مراسم ترحیم ارائه می‌دهد: سنگ مزار، تاج گل، پذیرایی، صندلی، مداح و مراسم سالگرد.',
+  },
 ];
 
 const STEPS = [
@@ -74,7 +76,6 @@ const STEPS = [
 ];
 
 export default async function DeceasedSearchPage() {
-  const s = await getSettings();
 
   const crumbs = [
     { name: 'خانه', path: '/' },
@@ -241,21 +242,50 @@ export default async function DeceasedSearchPage() {
         </div>
       </section>
 
-      {/* کمک */}
+      {/* کمک — راهنمایی خودخدمتی. عمداً شماره تلفن ندارد: استعلام محل دفن
+          کار ما نیست و فقط در سامانه رسمی شهرداری قابل انجام است. */}
       <section className="section pt-0" aria-labelledby="help-heading">
         <div className="rounded-2xl border border-gold-400/40 bg-gold-100/50 p-6 sm:p-8">
           <h2 id="help-heading" className="mb-3 text-[17px]">
-            نتیجه‌ای پیدا نکردید؟
+            نتیجه‌ای پیدا نکردید؟ این چهار مورد را امتحان کنید
           </h2>
-          <p className="mb-5 max-w-2xl text-[14px] leading-[2.1] text-ink-soft">
-            رایج‌ترین علت، تفاوت املای نام است — «رضایی» و «رضائی»، یا فاصله و نیم‌فاصله در نام
-            خانوادگی. نام را با املاهای مختلف و حتی بدون نام کوچک امتحان کنید. اگر باز هم پیدا
-            نشد، با ما تماس بگیرید؛ همکاران ما با روال و ساختار قطعات آرامستان آشنا هستند و
-            راهنمایی‌تان می‌کنند.
+          <p className="mb-4 max-w-2xl text-[14px] leading-[2.1] text-ink-soft">
+            در بیش از ۹ مورد از ۱۰ مورد، علت نبودِ نتیجه تفاوت املای نام است، نه نبودن نام در
+            سامانه. به این ترتیب امتحان کنید:
           </p>
-          <a href={telHref(s.phone)} className="btn-primary">
-            <Icon name="phone" className="h-4 w-4" />
-            <span className="font-extrabold tracking-wide">{toFa(s.phone)}</span>
+          <ol className="mb-5 max-w-2xl space-y-2.5 text-[14px] leading-[2] text-ink-soft">
+            <li>
+              <strong className="text-ink">۱. املاهای جایگزین.</strong> «رضایی» و «رضائی»،
+              «محمدی» و «محمّدی»، «طاهرزاده» و «طاهر زاده».
+            </li>
+            <li>
+              <strong className="text-ink">۲. بدون نام کوچک.</strong> فقط نام خانوادگی را وارد
+              کنید؛ فهرست بلندتر می‌شود اما احتمال پیدا شدن بیشتر است.
+            </li>
+            <li>
+              <strong className="text-ink">۳. نیم‌فاصله و فاصله را بردارید.</strong> نام را
+              سرهم و بعد جدا امتحان کنید.
+            </li>
+            <li>
+              <strong className="text-ink">۴. نام شناسنامه‌ای.</strong> بسیاری از متوفیان با
+              نامی ثبت شده‌اند که خانواده به آن صدایشان نمی‌کرده است.
+            </li>
+          </ol>
+          <div className="rounded-xl border border-line bg-white/70 p-4">
+            <p className="text-[13px] leading-[2] text-ink-soft">
+              <strong className="text-ink">استعلام محل دفن تلفنی انجام نمی‌شود.</strong> این
+              اطلاعات فقط در سامانه رسمی سازمان بهشت زهرا موجود است و ما به آن دسترسی نداریم.
+              اگر با این چهار روش هم پیدا نشد، باید حضوری به دفتر اطلاعات آرامستان مراجعه کنید.
+            </p>
+          </div>
+          <a
+            href={OFFICIAL_URL}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="btn-outline mt-5"
+          >
+            بازگشت به سامانه رسمی جستجو
+            <Icon name="arrow" className="h-4 w-4 rotate-180" />
           </a>
         </div>
       </section>
@@ -299,7 +329,7 @@ export default async function DeceasedSearchPage() {
         </div>
       </section>
 
-      <CallCta title="در پیدا کردن مزار کمک لازم دارید؟" />
+      <CallCta title="برای سنگ مزار، تاج گل یا مراسم سالگرد آماده‌اید؟" />
 
       <JsonLd data={[breadcrumbSchema(crumbs), howTo, faqSchema(FAQ)]} />
     </div>
