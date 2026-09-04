@@ -20,6 +20,23 @@ const FORCE = process.argv.includes('--force');
 const ROOT = process.cwd();
 const UPLOADS = path.join(ROOT, 'public', 'uploads');
 
+/* ----------------------------- خواندن .env ----------------------------- */
+// اسکریپت‌های مستقل Node فایل .env را خودکار نمی‌خوانند؛ Next.js این کار را می‌کند.
+function loadEnv() {
+  for (const file of ['.env.local', '.env']) {
+    const p = path.join(ROOT, file);
+    if (!fs.existsSync(p)) continue;
+    for (const line of fs.readFileSync(p, 'utf8').split('\n')) {
+      const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)$/i);
+      if (!m) continue;
+      if (!process.env[m[1]]) {
+        process.env[m[1]] = (m[2] || '').trim().replace(/^["']|["']$/g, '');
+      }
+    }
+  }
+}
+loadEnv();
+
 /** اسلاگ → نام فایل در public/uploads */
 export const IMAGE_MAP = {
   product: {

@@ -99,12 +99,20 @@ async function main() {
   console.log(`→ اتصال به MongoDB (${process.env.MONGODB_DB || 'amorz'})…${DRY ? ' [حالت آزمایشی]' : ''}\n`);
   await mongoose.connect(URI, { dbName: process.env.MONGODB_DB || 'amorz' });
 
-  // ابتدا دسته‌بندی‌های تعریف‌شده در فایل ساخته یا به‌روز می‌شوند
+  // ابتدا دسته‌بندی‌های تعریف‌شده در فایل ساخته یا به‌روز می‌شوند.
+  // فقط فیلدهایی که در فایل آمده‌اند نوشته می‌شوند؛ پس یک ورودی می‌تواند
+  // صرفاً metaTitle و metaDescription داشته باشد و بقیه دست‌نخورده بماند.
   if (cats.length) {
     for (const c of cats) {
       const existing = await Category.findOne({ slug: c.slug }).lean();
+      if (!existing && !c.title) {
+        console.error(`  ✖ دسته ${c.slug} در دیتابیس نیست و در فایل هم عنوان ندارد — رد شد.`);
+        continue;
+      }
       if (!DRY) await Category.updateOne({ slug: c.slug }, { $set: c }, { upsert: true });
-      console.log(`  ${existing ? '✎' : '✔'} دسته ${c.slug} — ${c.title}`);
+      const name = c.title || existing?.title || c.slug;
+      const fields = Object.keys(c).filter((k) => k !== 'slug');
+      console.log(`  ${existing ? '✎' : '✔'} دسته ${c.slug} — ${name}  [${fields.join('، ')}]`);
     }
     console.log();
   }
