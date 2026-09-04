@@ -13,7 +13,8 @@
     "import:catalog": "node scripts/import-catalog.mjs",
     "audit": "node scripts/seo-audit.mjs",
     "optimize:uploads": "node scripts/optimize-uploads.mjs",
-    "set:images": "node scripts/set-images.mjs"
+    "set:images": "node scripts/set-images.mjs",
+    "revalidate": "node scripts/revalidate.mjs"
   },
   "dependencies": {
     "marked": "^15.0.6",

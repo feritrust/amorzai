@@ -196,7 +196,7 @@ async function main() {
   }
 
   if (!DRY && (created || updated)) {
-    console.log('\nحالا کش صفحات را تازه کنید — از داشبورد پنل دکمه «بازسازی کش صفحات اصلی».');
+    console.log('\nحالا کش صفحات را تازه کنید:  npm run revalidate');
   }
   if (DRY) console.log('\nبرای اعمال واقعی، بدون --dry اجرا کنید.');
 }

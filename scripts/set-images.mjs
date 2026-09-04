@@ -119,6 +119,10 @@ async function main() {
   console.log(
     `\nتنظیم‌شده: ${set} | رد شده: ${skipped} | پیدا نشد: ${notFound}${DRY ? '  (چیزی نوشته نشد)' : ''}`,
   );
+  if (set && !DRY) {
+    console.log('\nحالا کش صفحات را تازه کنید، وگرنه عکس‌ها تا یک ساعت دیده نمی‌شوند:');
+    console.log('  npm run revalidate');
+  }
   await mongoose.disconnect();
 }
 
