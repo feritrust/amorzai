@@ -12,7 +12,8 @@
     "import:articles": "node scripts/import-articles.mjs",
     "import:catalog": "node scripts/import-catalog.mjs",
     "audit": "node scripts/seo-audit.mjs",
-    "optimize:uploads": "node scripts/optimize-uploads.mjs"
+    "optimize:uploads": "node scripts/optimize-uploads.mjs",
+    "set:images": "node scripts/set-images.mjs"
   },
   "dependencies": {
     "marked": "^15.0.6",

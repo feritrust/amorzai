@@ -262,6 +262,7 @@ export const products = [
     metaTitle: 'تاج گل ایستاده یک طبقه | قیمت در بهشت زهرا',
     metaDescription:
       'تاج گل ایستاده یک طبقه برای مراسم ترحیم در بهشت زهرا؛ گل تازه روز با ریبون نوشته دلخواه. تحویل در محل مراسم.',
+    image: '/uploads/amorz-taj-gol-yek-tabaghe.webp',
   },
   {
     slug: 'taj-gol-do-tabaghe',
@@ -290,6 +291,7 @@ export const products = [
     metaTitle: 'تاج گل ترحیم دو طبقه | قیمت در بهشت زهرا',
     metaDescription:
       'تاج گل ترحیم دو طبقه با گل تازه روز برای مراسم در بهشت زهرا؛ ریبون با متن دلخواه و تحویل در محل مراسم. قیمت روی سایت مشخص است.',
+    image: '/uploads/amorz-taj-gol-do-tabaghe.webp',
   },
   {
     slug: 'taj-gol-se-tabaghe-lux',
@@ -318,6 +320,7 @@ export const products = [
     metaTitle: 'تاج گل سه طبقه لوکس | سفارش در بهشت زهرا',
     metaDescription:
       'تاج گل سه طبقه لوکس برای مراسم ترحیم در بهشت زهرا؛ مناسب مجالس بزرگ و رسمی. گل تازه روز، ریبون اختصاصی و تحویل در محل.',
+    image: '/uploads/amorz-taj-gol-se-tabaghe-lux.webp',
   },
   {
     slug: 'sabad-gol-tarhim',
@@ -367,6 +370,7 @@ export const products = [
     metaTitle: 'سنگ مزار گرانیت مشکی | قیمت در بهشت زهرا',
     metaDescription:
       'سنگ مزار گرانیت مشکی برای بهشت زهرا؛ مقاوم در برابر آب و آفتاب و مناسب اقلیم تهران. قیمت، حکاکی و نصب با هماهنگی تلفنی.',
+    image: '/uploads/amorz-sang-mazar-granit.webp',
   },
   {
     slug: 'sang-mazar-marmar-sefid',
@@ -395,6 +399,7 @@ export const products = [
     metaTitle: 'سنگ مزار مرمر سفید | قیمت در بهشت زهرا',
     metaDescription:
       'سنگ مزار مرمر سفید برای بهشت زهرا؛ ظاهر روشن و کلاسیک با امکان حکاکی متن و نقش. مشاهده قیمت و هماهنگی نصب به‌صورت تلفنی.',
+    image: '/uploads/amorz-sang-mazar-marmar-sefid.webp',
   },
   {
     slug: 'hakaki-va-nasb-sang',
@@ -512,6 +517,7 @@ export const services = [
     metaTitle: 'اجاره صندلی بهشت زهرا | قیمت هر عدد',
     metaDescription:
       'اجاره صندلی برای مراسم ترحیم در بهشت زهرا با قیمت هر عدد. چیدمان پیش از مراسم و جمع‌آوری پس از آن با تیم آمرز انجام می‌شود.',
+    image: '/uploads/amorz-ejare-sandali.webp',
   },
   {
     slug: 'ejare-sandali-lux',
@@ -533,6 +539,7 @@ export const services = [
     metaTitle: 'اجاره صندلی لوکس بهشت زهرا | روکش‌دار',
     metaDescription:
       'اجاره صندلی لوکس روکش‌دار برای مراسم ترحیم در بهشت زهرا؛ مناسب مجالس رسمی. چیدمان و جمع‌آوری بر عهده تیم آمرز است.',
+    image: '/uploads/amorz-ejare-sandali-lux.webp',
   },
   {
     slug: 'set-miz-va-sandali',
@@ -577,6 +584,7 @@ export const services = [
     metaTitle: 'اجاره سایبان بهشت زهرا | نصب در محل مراسم',
     metaDescription:
       'اجاره سایبان چادری برای مراسم ترحیم در بهشت زهرا؛ محافظت از میهمانان در برابر آفتاب و باران. نصب و برچیدن با تیم ما.',
+    image: '/uploads/amorz-ejare-sayeban.webp',
   },
   {
     slug: 'sistem-sowti-marasem',
@@ -706,6 +714,7 @@ export const services = [
     metaTitle: 'ناهار ترحیم چلوکباب | رزرو نزدیک بهشت زهرا',
     metaDescription:
       'ناهار ترحیم با منوی چلوکباب در رستوران نزدیک بهشت زهرا؛ رزرو سالن، ظرفیت مشخص و قیمت به ازای هر نفر. هماهنگی تلفنی.',
+    image: '/uploads/amorz-nahar-chelokabab.webp',
   },
   {
     slug: 'nahar-khoresh-va-polo',
@@ -727,6 +736,7 @@ export const services = [
     metaTitle: 'ناهار ترحیم خورش و پلو | نزدیک بهشت زهرا',
     metaDescription:
       'ناهار ترحیم با منوی خورش و پلو در رستوران نزدیک بهشت زهرا؛ گزینه‌ای اقتصادی‌تر از چلوکباب. قیمت هر نفر و رزرو تلفنی.',
+    image: '/uploads/amorz-nahar-khoresh-polo.webp',
   },
   {
     slug: 'maddahi-marasem-tarhim',
