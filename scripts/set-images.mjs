@@ -53,8 +53,9 @@ export const IMAGE_MAP = {
     'ejare-miz': 'amorz-ejare-miz.webp',
     'ejare-sayeban-chadori': 'amorz-ejare-sayeban.webp',
     'khorma-maghz-gerdoo': 'amorz-khorma-maghz-gerdoo.webp',
-    'nahar-tarhim-chelokabab': 'amorz-nahar-chelokabab.webp',
-    'nahar-khoresh-va-polo': 'amorz-nahar-khoresh-polo.webp',
+    'chelo-kabab-loghme': 'amorz-nahar-kabab-loghme.webp',
+    'zereshk-polo-ba-morgh': 'amorz-nahar-zereshk-polo.webp',
+    'chelo-jooje-kabab': 'amorz-nahar-chelo-jooje.webp',
   },
 };
 

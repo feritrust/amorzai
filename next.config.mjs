@@ -39,6 +39,17 @@ const nextConfig = {
       { source: '/index', destination: '/', permanent: true },
       { source: '/home', destination: '/', permanent: true },
       { source: '/category', destination: '/categories', permanent: true },
+      // منوی رستوران به سه غذای واقعی تغییر کرد؛ آدرس‌های قدیمی نباید ۴۰۴ شوند
+      {
+        source: '/service/nahar-tarhim-chelokabab',
+        destination: '/service/chelo-kabab-loghme',
+        permanent: true,
+      },
+      {
+        source: '/service/nahar-khoresh-va-polo',
+        destination: '/service/zereshk-polo-ba-morgh',
+        permanent: true,
+      },
       { source: '/product', destination: '/products', permanent: true },
       { source: '/service', destination: '/services', permanent: true },
       { source: '/products/page/1', destination: '/products', permanent: true },
