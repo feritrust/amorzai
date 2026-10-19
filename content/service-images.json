@@ -1,0 +1,252 @@
+{
+  "createdAt": "2026-10-19",
+  "generationTool": "Built-in image_gen.imagegen",
+  "purpose": "Representative service imagery; generated assets are illustrative and are not evidence of actual orders or named staff.",
+  "integration": "src/data/service-images.mjs and src/lib/image.js. Use only for blank images or category SVG placeholders; custom uploads take priority.",
+  "processing": {
+    "format": "webp",
+    "width": 1200,
+    "height": 900,
+    "quality": 80
+  },
+  "generatedAssets": [
+    {
+      "slug": "set-miz-va-sandali",
+      "output": "public/uploads/amorz-generated-service-set-miz-va-sandali-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A single round banquet table about 150 cm across with exactly eight simple black metal-framed padded chairs arranged around it, tidy ivory tablecloth reaching toward the floor, empty modest Iranian event hall with light beige walls. All eight chairs visible, no food or people, no wedding decor. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "sistem-sowti-marasem",
+      "output": "public/uploads/amorz-generated-service-sistem-sowti-marasem-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A practical portable memorial-event audio kit: two black active PA loudspeakers on stable tripod stands, one wired handheld microphone and one wireless handheld microphone next to a small sound mixing console on a simple black-draped table, cables neatly coiled. A quiet modest empty event venue, focus on real equipment not stage entertainment. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "ejare-bokhari-va-koler",
+      "output": "public/uploads/amorz-generated-service-ejare-bokhari-va-koler-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A neat rental-equipment display in a shaded open-sided courtyard: one stainless-steel mushroom-top outdoor gas patio heater with concealed gas bottle base and one portable white air-conditioning unit with a wide exhaust hose visibly connected to an open exterior vent. Units side by side with safe spacing, switched off, no flames or people. Both complete devices visible. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "pazirayi-khorma-va-chai",
+      "output": "public/uploads/amorz-generated-service-pazirayi-khorma-va-chai-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A modest Iranian condolence hospitality setup: a clean stainless serving tray with several small heat-resistant tea glasses filled with amber black tea, a small white plate of dark Mazafati dates each with a walnut piece, black tablecloth in a neutral hall. Emphasize simple dates and tea rather than luxurious dessert display; no loose rose petals or candles. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "halva-va-sharbat",
+      "output": "public/uploads/amorz-generated-service-halva-va-sharbat-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. Iranian funeral hospitality: several individual small lidded dessert cups containing saffron rosewater halva piped in neat swirls, with cups of pale yellow lemon syrup drink and fresh mint beside them on a dark serving table. Show both halva and sharbat clearly, clean practical disposable serving containers, a few lids on and a few open. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "pazirayi-kamel-majles",
+      "output": "public/uploads/amorz-generated-service-pazirayi-kamel-majles-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A complete restrained Iranian condolence reception table with neatly separated trays of walnut-stuffed dates, small portions of saffron halva, dry tea cookies, amber black tea in sturdy disposable cups, small sealed water bottles and pale lemon sharbat. Plain black tablecloth, modest neutral hall, believable quantities and tidy layout, no wedding cake or extravagant decor. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "maddahi-marasem-tarhim",
+      "output": "public/uploads/amorz-generated-service-maddahi-marasem-tarhim-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. An empty simple memorial-recitation position: one black handheld microphone on a stand beside a dark wooden lectern, a small closed unlettered poetry book and discreet white lily arrangement. Neutral modest Iranian memorial hall with several empty chairs softly blurred behind. No performer or portrait, no theatrical stage or concert lighting. This symbolic service image should suit different recitation styles. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "ghari-quran",
+      "output": "public/uploads/amorz-generated-service-ghari-quran-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A respectful Quran recitation setup in a quiet Iranian memorial hall: a Quran resting on a traditional wooden folding rehal, a microphone on a short stand positioned appropriately beside it, neutral clean carpet and soft light. Book viewed at a distance and shallow angle so fine script is not legible or invented, focus on bookstand and microphone, no people or portraits. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "sokhanran-va-rohani",
+      "output": "public/uploads/amorz-generated-service-sokhanran-va-rohani-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A modest Iranian memorial speaker position with a plain wooden lectern, gooseneck microphone and a closed plain dark book, simple black fabric backdrop and a small white flower arrangement to one side. A person in a simple dark clerical robe visible only from shoulders to hands standing behind lectern, head entirely outside the frame, hands naturally resting on lectern. No identifiable face, no turban on objects, no dramatic gestures. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "hamahangi-ghosl-kafan-dafn",
+      "output": "public/uploads/amorz-generated-service-hamahangi-ghosl-kafan-dafn-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A dignified non-graphic administrative coordination scene: a simple clean office desk with a closed unmarked document folder, blank appointment checklist sheet, black pen and a mobile phone lying screen-down; two adults visible only as naturally positioned hands calmly discussing arrangements across the desk. No corpses, graveside rituals, shrouds, coffins, medical procedures, readable forms or official emblems. Practical neutral office, quiet helpful mood. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "filmbardari-va-akkasi-marasem",
+      "output": "public/uploads/amorz-generated-service-filmbardari-va-akkasi-marasem-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. Professional compact video camera with a modest zoom lens on a stable tripod in a quiet empty memorial hall, a still-photo camera resting on a nearby dark-draped table. Blurred rows of empty chairs and a small white floral arrangement behind. Realistic practical camera equipment and respectful unobtrusive documentary mood, no people or branded markings. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "servis-ayab-zahab",
+      "output": "public/uploads/amorz-generated-service-servis-ayab-zahab-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A clean modest white passenger minibus with dark windows parked safely on a paved open road beside cypress trees near an Iranian cemetery setting, vehicle shown at a three-quarter front angle with its complete body in frame. No passengers, no readable license plate, no company branding, no ambulance or hearse appearance, no luxury limousine. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "parche-rumizi",
+      "output": "public/uploads/amorz-generated-service-parche-rumizi-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. Rental tablecloth catalog photograph: one simple rectangular reception table fully covered with a clean pressed black cloth with straight drape, one folded ivory tablecloth placed neatly on top. Plain warm gray indoor wall and stone floor. Focus on fabric texture, clean hems and practical event use, no food, flowers or wedding styling. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "navazande-ney",
+      "output": "public/uploads/amorz-generated-service-navazande-ney-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A traditional Persian ney reed flute carefully resting diagonally on a plain dark cloth beside a discreet microphone on a low stand, quiet modest memorial hall softly blurred in background. Show the natural tan reed body, recognizable finger holes and open end, no western concert flute or clarinet, no musician portrait, no exaggerated ornamental instrument. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "pack-mive-tarhim",
+      "output": "public/uploads/amorz-generated-service-pack-mive-tarhim-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. One realistic individual Iranian memorial fruit pack in a clear rectangular food-safe clamshell container with its hinged lid open, containing one banana, one peach, one small cucumber, one small generic juice carton with a paper straw and one small individually wrapped plain cake. A second closed identical pack blurred behind. No apples or other extra products, no branded labels, tidy practical portions on neutral tabletop. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "chai-marasem",
+      "output": "public/uploads/amorz-generated-service-chai-marasem-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A stainless tray holding six sturdy plain disposable paper cups with lids beside them, several cups visibly filled with freshly brewed amber black tea. Simple insulated tea urn softly out of focus behind on a black-draped hospitality table. Practical modest Iranian memorial catering, subtle steam, no branded cups, no coffee. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "neskafe-marasem",
+      "output": "public/uploads/amorz-generated-service-neskafe-marasem-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. Plain cream disposable hot-drink cups with dark lids on a small dark serving tray, one open cup clearly showing creamy light-brown instant coffee with a delicate foam rim, a plain small spoon and unbranded sealed coffee sachet. Warm neutral catering-table setting, believable modest presentation, not espresso art or oversized cafe mugs. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "abmive-pakati",
+      "output": "public/uploads/amorz-generated-service-abmive-pakati-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. Several small generic single-serving juice cartons arranged neatly on a neutral catering table, muted orange and apple-green packaging panels with a small simple fruit illustration, each with its sealed straw attached. No brand names, no written labels, no nutritional claims. Practical hygienic memorial-event hospitality, clearly boxed juice rather than bottles. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "ab-madani-box",
+      "output": "public/uploads/amorz-generated-service-ab-madani-box-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. Exactly twelve small clear sealed plastic water bottles in a single shrink-wrapped 3 by 4 pack, blue caps and plain unprinted white labels, one corner of clear wrapping naturally wrinkled. Whole pack fully visible at a three-quarter tabletop angle, tiny realistic condensation drops, no brand or text, modest practical wholesale catering product. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "tazin-miz-tarhim",
+      "output": "public/uploads/amorz-generated-service-tazin-miz-tarhim-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A tasteful modest Iranian memorial welcome table, clean pressed black tablecloth, a simple vertical wooden A3 photo frame with a blank charcoal insert and small black mourning ribbon, small arrangement of white lilies and cream roses, two simple unlit ivory candles in stable holders and a closed plain remembrance book. Neutral hall entrance, no portrait or writing, restrained balanced design, complete table arrangement visible. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "mehmandar-marasem",
+      "output": "public/uploads/amorz-generated-service-mehmandar-marasem-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A memorial hospitality staff member shown only from shoulders down, wearing neat plain black long-sleeved catering uniform and carrying a stainless tray with cups of amber tea and a small plate of dates. Natural anatomically correct hands, head outside frame. Empty chairs softly blurred behind, calm discreet professional service rather than smiling advertisement, no badge names or company logo. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    },
+    {
+      "slug": "gharaat-fateha-niabati",
+      "output": "public/uploads/amorz-generated-service-gharaat-fateha-niabati-v1.webp",
+      "prompt": "Use case: product-mockup. One photorealistic representative service catalog photograph for an Iranian memorial and funeral-services website. A respectful symbolic remote graveside Quran-recitation setup: a small wooden rehal holding a Quran beside a plain unlettered dark granite grave slab, a compact video camera on a tripod placed discreetly nearby to document the service, a few white flowers at slab edge. No visible people or faces, no legible Quran text, no names or dates on stone, quiet Iranian cemetery with cypress trees softly blurred behind, natural gentle daylight. Restrained respectful professional presentation, natural believable materials, soft neutral daylight, landscape 4:3 composition with full subject and comfortable crop margins. No logos, watermarks, text overlays, fictional names, dates, phone numbers, actual deceased portraits, or readable documents. No collage. This is an illustrative example, not documentation of an actual order."
+    }
+  ],
+  "existingPhotoAssets": [
+    {
+      "source": "photos/khorma va halva 2.jpeg",
+      "output": "public/uploads/amorz-service-halva-roleti-v1.webp",
+      "rotation": 90,
+      "services": [
+        "halva-roleti"
+      ]
+    },
+    {
+      "source": "photos/gol-arae.jpeg",
+      "output": "public/uploads/amorz-service-golgozari-niabati-v1.webp",
+      "services": [
+        "golgozari-niabati",
+        "marasem-salgard-niabati"
+      ]
+    }
+  ],
+  "assignments": {
+    "set-miz-va-sandali": {
+      "image": "/uploads/amorz-generated-service-set-miz-va-sandali-v1.webp",
+      "isIllustrative": true
+    },
+    "sistem-sowti-marasem": {
+      "image": "/uploads/amorz-generated-service-sistem-sowti-marasem-v1.webp",
+      "isIllustrative": true
+    },
+    "ejare-bokhari-va-koler": {
+      "image": "/uploads/amorz-generated-service-ejare-bokhari-va-koler-v1.webp",
+      "isIllustrative": true
+    },
+    "pazirayi-khorma-va-chai": {
+      "image": "/uploads/amorz-generated-service-pazirayi-khorma-va-chai-v1.webp",
+      "isIllustrative": true
+    },
+    "halva-va-sharbat": {
+      "image": "/uploads/amorz-generated-service-halva-va-sharbat-v1.webp",
+      "isIllustrative": true
+    },
+    "pazirayi-kamel-majles": {
+      "image": "/uploads/amorz-generated-service-pazirayi-kamel-majles-v1.webp",
+      "isIllustrative": true
+    },
+    "maddahi-marasem-tarhim": {
+      "image": "/uploads/amorz-generated-service-maddahi-marasem-tarhim-v1.webp",
+      "isIllustrative": true
+    },
+    "ghari-quran": {
+      "image": "/uploads/amorz-generated-service-ghari-quran-v1.webp",
+      "isIllustrative": true
+    },
+    "sokhanran-va-rohani": {
+      "image": "/uploads/amorz-generated-service-sokhanran-va-rohani-v1.webp",
+      "isIllustrative": true
+    },
+    "hamahangi-ghosl-kafan-dafn": {
+      "image": "/uploads/amorz-generated-service-hamahangi-ghosl-kafan-dafn-v1.webp",
+      "isIllustrative": true
+    },
+    "filmbardari-va-akkasi-marasem": {
+      "image": "/uploads/amorz-generated-service-filmbardari-va-akkasi-marasem-v1.webp",
+      "isIllustrative": true
+    },
+    "servis-ayab-zahab": {
+      "image": "/uploads/amorz-generated-service-servis-ayab-zahab-v1.webp",
+      "isIllustrative": true
+    },
+    "parche-rumizi": {
+      "image": "/uploads/amorz-generated-service-parche-rumizi-v1.webp",
+      "isIllustrative": true
+    },
+    "navazande-ney": {
+      "image": "/uploads/amorz-generated-service-navazande-ney-v1.webp",
+      "isIllustrative": true
+    },
+    "pack-mive-tarhim": {
+      "image": "/uploads/amorz-generated-service-pack-mive-tarhim-v1.webp",
+      "isIllustrative": true
+    },
+    "chai-marasem": {
+      "image": "/uploads/amorz-generated-service-chai-marasem-v1.webp",
+      "isIllustrative": true
+    },
+    "neskafe-marasem": {
+      "image": "/uploads/amorz-generated-service-neskafe-marasem-v1.webp",
+      "isIllustrative": true
+    },
+    "abmive-pakati": {
+      "image": "/uploads/amorz-generated-service-abmive-pakati-v1.webp",
+      "isIllustrative": true
+    },
+    "ab-madani-box": {
+      "image": "/uploads/amorz-generated-service-ab-madani-box-v1.webp",
+      "isIllustrative": true
+    },
+    "tazin-miz-tarhim": {
+      "image": "/uploads/amorz-generated-service-tazin-miz-tarhim-v1.webp",
+      "isIllustrative": true
+    },
+    "mehmandar-marasem": {
+      "image": "/uploads/amorz-generated-service-mehmandar-marasem-v1.webp",
+      "isIllustrative": true
+    },
+    "gharaat-fateha-niabati": {
+      "image": "/uploads/amorz-generated-service-gharaat-fateha-niabati-v1.webp",
+      "isIllustrative": true
+    },
+    "maddah-azari": {
+      "image": "/uploads/amorz-generated-service-maddahi-marasem-tarhim-v1.webp",
+      "isIllustrative": true
+    },
+    "maddah-erfani": {
+      "image": "/uploads/amorz-generated-service-maddahi-marasem-tarhim-v1.webp",
+      "isIllustrative": true
+    },
+    "halva-roleti": {
+      "image": "/uploads/amorz-service-halva-roleti-v1.webp",
+      "isIllustrative": false
+    },
+    "golgozari-niabati": {
+      "image": "/uploads/amorz-service-golgozari-niabati-v1.webp",
+      "isIllustrative": false
+    },
+    "marasem-salgard-niabati": {
+      "image": "/uploads/amorz-service-golgozari-niabati-v1.webp",
+      "isIllustrative": false
+    }
+  }
+}

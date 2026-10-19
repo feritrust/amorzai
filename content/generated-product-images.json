@@ -1,0 +1,39 @@
+{
+  "createdAt": "2026-10-19",
+  "tool": "Built-in image_gen.imagegen",
+  "purpose": "Representative images for five products without a dedicated photo. Not photographs of actual orders.",
+  "integration": "src/data/generated-product-images.mjs and src/lib/image.js; custom product images take priority. Storefront cards and detail views label these images as illustrative.",
+  "processing": {
+    "width": 1200,
+    "height": 900,
+    "format": "webp",
+    "quality": 80
+  },
+  "assets": [
+    {
+      "slug": "sabad-gol-tarhim",
+      "output": "public/uploads/amorz-generated-sabad-gol-tarhim-v1.webp",
+      "prompt": "Use case: product-mockup. Create one photorealistic representative ecommerce catalog photograph for an Iranian funeral flower basket (sabad gol tarhim). A compact tasteful low wicker basket filled with fresh white lilies, cream roses, white chrysanthemums and modest dark green foliage, about 70 by 50 cm. Entire basket visible and centered with comfortable margins for a 4:3 product-card crop, three-quarter eye-level view on a plain warm light-gray studio surface and background. Soft natural lighting, believable modest locally available product, crisp realistic texture, respectful restrained mood. No people, no memorial portraits, no text, no logos, no watermark. Single photograph, no collage. This is an illustrative product example, not a photograph of an actual delivered order."
+    },
+    {
+      "slug": "hakaki-va-nasb-sang",
+      "output": "public/uploads/amorz-generated-hakaki-va-nasb-sang-v1.webp",
+      "prompt": "Use case: product-mockup. Asset type: one representative catalog illustration for an Iranian memorial-services website. A respectful photorealistic representative ecommerce service photograph showing stone inscription workmanship: close three-quarter view of a polished black rectangular granite memorial slab resting safely on a low stonework bench, a worker's gloved hands carefully operating a portable engraving tool over a small nonverbal floral outline on its corner. No legible inscriptions, no names, no dates, no portrait, no bodies, no mourners, no sparks, no dramatic graveyard, no claims of a real order. Focus on granite surface and careful craft, modest professional equipment, warm neutral workshop backdrop, soft daylight, composition centered with comfortable crop margins. Single photograph, no collage. Compose for landscape 4:3 display."
+    },
+    {
+      "slug": "banner-tarhim-forri",
+      "output": "public/uploads/amorz-generated-banner-tarhim-forri-v1.webp",
+      "prompt": "Use case: product-mockup. Asset type: one representative catalog illustration for an Iranian memorial-services website. A photorealistic representative catalog photograph of a single printed Iranian condolence banner, horizontal black vinyl with tasteful fine ivory ornamented borders and a small white lily motif in one corner. Main center text in Persian exactly: «با تسلیت و احترام». No other writing, no names or dates, no portrait. Realistic flexible thick vinyl material, neatly hemmed edges and metal hanging eyelets, displayed flat hanging neatly against a plain warm light gray wall, entire banner visible with comfortable margins. Quiet elegant restrained design, soft studio daylight, realistic matte texture. No western funeral signs, no logos, no watermark. Single photograph, no collage. Compose for landscape 4:3 display."
+    },
+    {
+      "slug": "kart-davat-khatm",
+      "output": "public/uploads/amorz-generated-kart-davat-khatm-v1.webp",
+      "prompt": "Use case: product-mockup. Asset type: one representative catalog illustration for an Iranian memorial-services website. A photorealistic representative ecommerce catalog photo of Iranian memorial invitation cards: a neat stack of matte thick off-white 10x15 cm cards on a warm light-gray studio surface, one card positioned upright on a small invisible support and two laid flat. Thin charcoal black border, subtle small floral engraving in corners. Persian title on front exactly «مجلس یادبود», two tasteful fine gray divider rules underneath with ample blank space for personalization. No invented names, dates, addresses, QR codes or phone numbers. Realistic paper edges, simple respectful Iranian design, centered comfortable framing, soft natural light, no logo, no watermark. Single photograph, no collage. Compose for landscape 4:3 display."
+    },
+    {
+      "slug": "ghab-aks-motevaffa",
+      "output": "public/uploads/amorz-generated-ghab-aks-motevaffa-v1.webp",
+      "prompt": "Use case: product-mockup. Asset type: one representative catalog illustration for an Iranian memorial-services website. A photorealistic representative ecommerce catalog photo of a simple dark brown wooden portrait photo frame with clear glass, A3 proportions 30x42 cm, standing vertically on a warm light-gray studio surface. Modest narrow wooden profile, a small black mourning ribbon over upper left corner. Inside frame a neutral charcoal-gray blank photographic insert with subtle studio light gradient, deliberately no face or person; this is a customizable frame product. Entire frame and wooden edges visible, front three-quarter angle, realistic glass reflections without obscuring surface, centered with generous margins, soft daylight, restrained respectful aesthetic. No names, writing, logos or watermark. Single photograph, no collage. Compose for landscape 4:3 display."
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export default function ItemCard({ item, categoryTitle, priority = false }) {
         <Image
           src={item.image}
           unoptimized={isPreOptimized(item.image)}
-          alt={`${item.title} — ${categoryTitle || 'آمرز'}`}
+          alt={`${item.imageIsIllustrative ? 'تصویر نمایشی ' : ''}${item.title} — ${categoryTitle || 'آمرز'}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-cover transition duration-500 group-hover:scale-[1.04]"
@@ -20,6 +20,11 @@ export default function ItemCard({ item, categoryTitle, priority = false }) {
         <span className="absolute right-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-medium text-sage-700 shadow-sm">
           {item.type === 'product' ? 'محصول' : 'خدمت'}
         </span>
+        {item.imageIsIllustrative ? (
+          <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-3 py-1 text-[11px] text-ink-muted shadow-sm">
+            تصویر نمایشی
+          </span>
+        ) : null}
       </Link>
 
       <div className="flex flex-1 flex-col p-4">

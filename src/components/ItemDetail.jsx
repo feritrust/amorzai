@@ -35,12 +35,17 @@ export default async function ItemDetail({ item, category }) {
           <Image
             src={item.image}
             unoptimized={isPreOptimized(item.image)}
-            alt={`${item.title} — ${category?.title || 'آمرز'} در بهشت زهرا`}
+            alt={`${item.imageIsIllustrative ? 'تصویر نمایشی ' : ''}${item.title} — ${category?.title || 'آمرز'} در بهشت زهرا`}
             fill
             sizes="(max-width: 1024px) 100vw, 55vw"
             className="object-cover"
             priority
           />
+          {item.imageIsIllustrative ? (
+            <p className="absolute bottom-3 left-3 right-3 rounded-lg bg-white/95 px-3 py-2 text-[12px] leading-6 text-ink-muted shadow-sm">
+              تصویر نمایشی است؛ طرح و جزئیات نهایی هنگام سفارش هماهنگ می‌شود.
+            </p>
+          ) : null}
         </div>
 
         {/* اطلاعات و CTA */}

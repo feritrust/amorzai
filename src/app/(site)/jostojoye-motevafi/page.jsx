@@ -4,12 +4,14 @@ import Faq from '@/components/Faq';
 import CallCta from '@/components/CallCta';
 import JsonLd from '@/components/JsonLd';
 import Icon from '@/components/Icons';
+import DeceasedSearch from '@/components/DeceasedSearch';
+import { getBridgeConfig } from '@/lib/bzo/bridge-client.mjs';
 import { abs, breadcrumbSchema, buildMetadata, faqSchema } from '@/lib/seo';
 import { toFa } from '@/lib/utils';
 
 export const revalidate = 86400;
 
-const OFFICIAL_URL = 'https://beheshtezahra.tehran.ir/default.aspx?tabid=92';
+const OFFICIAL_URL = 'https://beheshtezahra.tehran.ir/bzo';
 
 // عنوان و توضیحات دقیقاً با زبان جستجوی کاربر هماهنگ شده‌اند: «نام خانوادگی»،
 // «رایگان» و «قطعه و ردیف» پرتکرارترین کلماتی هستند که کاربران تایپ می‌کنند.
@@ -66,8 +68,8 @@ const STEPS = [
     text: 'نام و نام خانوادگی متوفی را وارد کنید. اگر نام پدر را می‌دانید، آن را هم بنویسید تا نتایج مشابه فیلتر شوند.',
   },
   {
-    title: 'وارد کردن کد امنیتی',
-    text: 'کد امنیتی (کپچا) را وارد و دکمه جستجو را بزنید. به همین دلیل هیچ سایتی نمی‌تواند این جستجو را به‌صورت خودکار انجام دهد.',
+    title: 'تکمیل فیلترها و ثبت جستجو',
+    text: 'نام و نام خانوادگی را کامل وارد کنید. برای دقیق‌تر شدن نتیجه می‌توانید نام پدر، قطعه یا بازه تاریخ دفن را هم مشخص کنید؛ سپس دکمه جستجو را بزنید.',
   },
   {
     title: 'خواندن نتیجه',
@@ -76,6 +78,7 @@ const STEPS = [
 ];
 
 export default async function DeceasedSearchPage() {
+  const searchEnabled = Boolean(getBridgeConfig());
 
   const crumbs = [
     { name: 'خانه', path: '/' },
@@ -118,6 +121,8 @@ export default async function DeceasedSearchPage() {
         </div>
       </header>
 
+      {searchEnabled ? <DeceasedSearch /> : null}
+
       {/* دسترسی به سامانه رسمی */}
       <section className="card mb-10 overflow-hidden" aria-labelledby="official-heading">
         <div className="border-b border-line bg-sage-50 px-6 py-5">
@@ -125,9 +130,9 @@ export default async function DeceasedSearchPage() {
             سامانه رسمی جستجوی متوفیان
           </h2>
           <p className="text-[13px] leading-7 text-ink-soft">
-            جستجو فقط در سامانه شهرداری تهران انجام می‌شود و به دلیل کد امنیتی، هیچ سایتی نمی‌تواند
-            آن را به‌صورت خودکار برای شما انجام دهد. ما هم دیتابیس متوفیان را در اختیار نداریم و
-            نگهداری نمی‌کنیم.
+            {searchEnabled
+              ? 'جستجو در همین صفحه با دریافت پاسخ از سامانه رسمی انجام می‌شود. برای مراجعه مستقیم یا استفاده از امکانات دیگر، وارد سامانه شهرداری تهران شوید.'
+              : 'برای جستجو، نام و نام خانوادگی را در سامانه رسمی شهرداری تهران وارد کنید. در حال حاضر نتایج جستجو مستقیماً در آمرز نمایش داده نمی‌شود و ما بانک اطلاعات متوفیان را در اختیار نداریم.'}
           </p>
         </div>
 
@@ -159,7 +164,7 @@ export default async function DeceasedSearchPage() {
       {/* مراحل */}
       <section className="section pt-0" aria-labelledby="steps-heading">
         <h2 id="steps-heading" className="mb-6">
-          مراحل جستجو
+          مراحل جستجو در سامانه رسمی
         </h2>
         <ol className="grid gap-4 sm:grid-cols-2">
           {STEPS.map((st, i) => (

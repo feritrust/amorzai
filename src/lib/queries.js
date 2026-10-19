@@ -9,6 +9,7 @@ import { site } from '@/lib/site';
 import { categories as seedCategories, products as seedProducts, services as seedServices } from '@/data/seed';
 import { articles as seedArticles } from '@/data/articles';
 import { PAGE_SIZE } from '@/lib/site';
+import { resolveItemImage } from '@/lib/image';
 
 /* ------------------------------------------------------------------ */
 /*  نرمال‌سازی: هر رکورد از DB یا داده داخلی به یک شکل واحد درمی‌آید    */
@@ -28,7 +29,7 @@ function normalizeItem(raw, type) {
     description: o.description || [],
     features: o.features || [],
     specs: o.specs || [],
-    image: o.image || `/images/${o.category}.svg`,
+    ...resolveItemImage({ type, slug: o.slug, category: o.category, image: o.image }),
     available: o.available !== false,
     metaTitle: o.metaTitle || '',
     metaDescription: o.metaDescription || '',
